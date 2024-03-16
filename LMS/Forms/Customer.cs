@@ -1,13 +1,8 @@
 ﻿using LMS.Data;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LMS.Forms
@@ -23,7 +18,8 @@ namespace LMS.Forms
 
 		private void btnClose_Click(object sender, EventArgs e)
 		{
-			Application.Exit();
+			LoadData();
+			this.Hide();
 		}
 
 		private void label7_Click(object sender, EventArgs e)
@@ -75,7 +71,7 @@ namespace LMS.Forms
 			{
 				try
 				{
-					SqlCommand cmdCus = new SqlCommand($"Insert into Customer(CustomerName,Sex,Phone,Email,DOB,POB,isHidden) values('{txtCustomerName.Text.Trim()}','M','{txtPhone.Text.Trim()}','{txtEmail.Text.Trim()}','{dtpDoB.Value}','{txtPoB.Text.Trim()}',0)  inserted.CustomerId", Connection.GetConnection());
+					SqlCommand cmdCus = new SqlCommand($"Insert into Customer(CustomerName,Sex,Phone,Email,DOB,POB,isHidden) output inserted.CustomerId values('{txtCustomerName.Text.Trim()}','M','{txtPhone.Text.Trim()}','{txtEmail.Text.Trim()}','{dtpDoB.Value.ToString("yyyy-MM-dd")}','{txtPoB.Text.Trim()}',0)  ", Connection.GetConnection());
 					int id = int.Parse(cmdCus.ExecuteScalar().ToString());
 					if(id > 0)
 					{
@@ -95,6 +91,26 @@ namespace LMS.Forms
 			}
 			else if(score == 2)
 			{
+				int id = int.Parse(dgCustomer.SelectedRows[0].Cells[0].Value.ToString());
+				if(id > 0)
+				{
+					try
+					{
+						SqlCommand cmd = new SqlCommand($"Update Customer Set CustomerName='{txtCustomerName.Text.Trim()}',Sex='{SetGender()}',Phone='{txtPhone.Text.Trim()}',Email='{txtEmail.Text.Trim()}',DOB='{dtpDoB.Value.ToString("yyyy-MM-dd")}',POB='{txtPoB.Text.Trim()}' where CustomerId='{id}'", Connection.GetConnection());
+						cmd.ExecuteNonQuery();
+						SqlCommand cmdAddress = new SqlCommand($"Delete from Address where CustomerId='{id}'",Connection.GetConnection());
+                        cmdAddress.ExecuteNonQuery();
+                        foreach (DataRow row in dtAddress.Rows)
+                        {
+                            SqlCommand cmdAddr = new SqlCommand($"Insert into Address(CustomerId,AddressName) values('{id}','{row["AddressName"]}')", Connection.GetConnection());
+                            cmdAddr.ExecuteNonQuery();
+                        }
+                    }
+					catch(Exception ex)
+					{
+						MessageBox.Show(ex.Message);
+					}
+				}
 				MessageBox.Show("Record is Updating!.");
 			}
 			else
@@ -111,11 +127,34 @@ namespace LMS.Forms
 		
 		}
 
+		void GetGender(char gender)
+		{
+			if(gender == 'F')
+			{
+				rdFemale.Checked = true;
+			}
+			else
+			{
+				rdMale.Checked = true;
+			}
+		}
+
+		char SetGender()
+		{
+			char gender;
+			if (rdFemale.Checked)
+			{
+				gender = 'F';
+			}
+			else
+			{
+                gender = 'M';
+            }
+			return gender;
+		}
 
 
-
-
-		public void LoadData()
+        public void LoadData()
 		{
 			SqlCommand cmd = new SqlCommand("Select CustomerId,CustomerName from Customer", Connection.GetConnection());
 			DataTable dt = new DataTable();
@@ -234,6 +273,8 @@ namespace LMS.Forms
 				txtEmail.Text = dataReader["Email"].ToString();
 				txtPhone.Text = dataReader["Phone"].ToString();
 				txtPoB.Text = dataReader["POB"].ToString();
+				GetGender(char.Parse(dataReader["Sex"].ToString()));
+				dtpDoB.Value = DateTime.Parse(dataReader["DOB"].ToString());
 			}
 			dataReader.Close();
 

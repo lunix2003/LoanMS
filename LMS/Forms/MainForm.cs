@@ -42,6 +42,7 @@ namespace LMS.Forms
 			btnLoan.BackColor = secondColor;
 		}
 
+		Customer customer;
 		private void btnDashboard_Click(object sender, EventArgs e)
 		{
 			if (pList.Visible == true) pList.Visible = !pList.Visible;
@@ -50,8 +51,10 @@ namespace LMS.Forms
 			btnListCenter.BackColor = secondColor;
 			btnTransaction.BackColor = secondColor;
 			btnManagement.ForeColor = Color.White;
-		}
 
+        }
+
+		CreditOfficer creditOfficer;
 		private void btnCreditOfficer_Click(object sender, EventArgs e)
 		{
 			btnCustomer.BackColor = secondColor;
@@ -59,8 +62,20 @@ namespace LMS.Forms
 			btnCollateralType.BackColor = secondColor;
 			btnCreditOfficer.BackColor = primaryColor;
 			btnManagement.ForeColor = Color.White;
-		}
+            btnMenu_Click(sender, e);
 
+            if (creditOfficer == null)
+            {
+                creditOfficer = new CreditOfficer();
+                creditOfficer.TopLevel = false;
+                creditOfficer.MdiParent = this;
+                this.pContent.Controls.Add(creditOfficer);
+            }
+            creditOfficer.BringToFront();
+            creditOfficer.Show();
+        }
+
+		Collateral collateral;
 		private void btnCollateral_Click(object sender, EventArgs e)
 		{
 			btnCustomer.BackColor = secondColor;
@@ -68,8 +83,20 @@ namespace LMS.Forms
 			btnCollateralType.BackColor = secondColor;
 			btnCreditOfficer.BackColor = secondColor;
 			btnManagement.ForeColor = Color.White;
-		}
+            btnMenu_Click(sender, e);
 
+            if (collateral == null)
+            {
+                collateral = new Collateral();
+                collateral.TopLevel = false;
+                collateral.MdiParent = this;
+                this.pContent.Controls.Add(collateral);
+            }
+            collateral.BringToFront();
+            collateral.Show();
+        }
+
+		CollateralType collateralType;
 		private void btnCollateralType_Click(object sender, EventArgs e)
 		{
 			btnCustomer.BackColor = secondColor;
@@ -77,7 +104,18 @@ namespace LMS.Forms
 			btnCollateralType.BackColor = primaryColor;
 			btnCreditOfficer.BackColor = secondColor;
 			btnManagement.ForeColor = Color.White;
-		}
+            btnMenu_Click(sender, e);
+
+            if (collateralType == null)
+            {
+                collateralType = new CollateralType();
+                collateralType.TopLevel = false;
+                collateralType.MdiParent = this;
+                this.pContent.Controls.Add(collateralType);
+            }
+            collateralType.BringToFront();
+            collateralType.Show();
+        }
 
 		private void btnCustomer_Click(object sender, EventArgs e)
 		{
@@ -86,7 +124,19 @@ namespace LMS.Forms
 			btnCollateralType.BackColor = secondColor;
 			btnCreditOfficer.BackColor = secondColor;
 			btnManagement.ForeColor = Color.White;
-		}
+			btnMenu_Click(sender, e);
+			
+            if (customer == null)
+            {
+                customer = new Customer();
+                customer.TopLevel = false;
+                customer.MdiParent = this;
+                this.pContent.Controls.Add(customer);
+            }
+            customer.BringToFront();
+            customer.Show();
+
+        }
 
 		private void btnLoan_Click(object sender, EventArgs e)
 		{
@@ -109,6 +159,8 @@ namespace LMS.Forms
 			pSidebar.Visible = !pSidebar.Visible;
 			if(pSidebar.Visible)
 			{
+				pSidebar.BringToFront();
+				//pNav.BringToFront();
 				btnMenu.Image = Resources.iconnavigationclose_24px;
 			}
 			else
@@ -139,9 +191,5 @@ namespace LMS.Forms
 			btnManagement.ForeColor = Color.FromArgb(44, 117, 181);
 		}
 
-		private void btnManagement_MouseLeave(object sender, EventArgs e)
-		{
-			//btnManagement.ForeColor = Color.White;
-		}
 	}
 }

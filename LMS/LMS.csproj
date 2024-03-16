@@ -47,11 +47,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Connection.cs" />
+    <Compile Include="Forms\Collateral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Collateral.Designer.cs">
+      <DependentUpon>Collateral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CollateralType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CollateralType.Designer.cs">
+      <DependentUpon>CollateralType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreditOfficer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreditOfficer.Designer.cs">
+      <DependentUpon>CreditOfficer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Customer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Customer.Designer.cs">
       <DependentUpon>Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Loan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Loan.Designer.cs">
+      <DependentUpon>Loan.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
@@ -67,8 +91,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Collateral.resx">
+      <DependentUpon>Collateral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CollateralType.resx">
+      <DependentUpon>CollateralType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CreditOfficer.resx">
+      <DependentUpon>CreditOfficer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer.resx">
       <DependentUpon>Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Loan.resx">
+      <DependentUpon>Loan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -113,6 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconnavigationmenu_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconnavigationchevron_left_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconnavigationchevron_right_24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
