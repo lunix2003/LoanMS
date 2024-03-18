@@ -60,18 +60,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgLoanDetail = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.lbtotalcost = new System.Windows.Forms.Label();
+            this.lbtotalinterest = new System.Windows.Forms.Label();
+            this.lbnumberofpayment = new System.Windows.Forms.Label();
+            this.lbmonthly = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lbmonthly = new System.Windows.Forms.Label();
-            this.lbnumberofpayment = new System.Windows.Forms.Label();
-            this.lbtotalinterest = new System.Windows.Forms.Label();
-            this.lbtotalcost = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -479,6 +479,17 @@
             this.panel4.Size = new System.Drawing.Size(1771, 69);
             this.panel4.TabIndex = 14;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Garamond", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label13.Location = new System.Drawing.Point(797, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(173, 45);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Schedule";
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.dgLoanDetail);
@@ -519,6 +530,55 @@
             this.panel6.Size = new System.Drawing.Size(1771, 69);
             this.panel6.TabIndex = 16;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(1968, 524);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(39, 20);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "<   >";
+            // 
+            // lbtotalcost
+            // 
+            this.lbtotalcost.AutoSize = true;
+            this.lbtotalcost.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            this.lbtotalcost.Location = new System.Drawing.Point(1108, 27);
+            this.lbtotalcost.Name = "lbtotalcost";
+            this.lbtotalcost.Size = new System.Drawing.Size(224, 27);
+            this.lbtotalcost.TabIndex = 9;
+            this.lbtotalcost.Text = "Total Cost Of Loan :";
+            // 
+            // lbtotalinterest
+            // 
+            this.lbtotalinterest.AutoSize = true;
+            this.lbtotalinterest.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            this.lbtotalinterest.Location = new System.Drawing.Point(770, 26);
+            this.lbtotalinterest.Name = "lbtotalinterest";
+            this.lbtotalinterest.Size = new System.Drawing.Size(165, 27);
+            this.lbtotalinterest.TabIndex = 9;
+            this.lbtotalinterest.Text = "Total Interest :";
+            // 
+            // lbnumberofpayment
+            // 
+            this.lbnumberofpayment.AutoSize = true;
+            this.lbnumberofpayment.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            this.lbnumberofpayment.Location = new System.Drawing.Point(399, 26);
+            this.lbnumberofpayment.Name = "lbnumberofpayment";
+            this.lbnumberofpayment.Size = new System.Drawing.Size(237, 27);
+            this.lbnumberofpayment.TabIndex = 9;
+            this.lbnumberofpayment.Text = "Number Of Payment :";
+            // 
+            // lbmonthly
+            // 
+            this.lbmonthly.AutoSize = true;
+            this.lbmonthly.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            this.lbmonthly.Location = new System.Drawing.Point(36, 26);
+            this.lbmonthly.Name = "lbmonthly";
+            this.lbmonthly.Size = new System.Drawing.Size(206, 27);
+            this.lbmonthly.TabIndex = 8;
+            this.lbmonthly.Text = "Monthly Payment :";
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::LMS.Properties.Resources.iconnavigationchevron_left_24px;
@@ -555,65 +615,6 @@
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
-            // 
-            // lbmonthly
-            // 
-            this.lbmonthly.AutoSize = true;
-            this.lbmonthly.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            this.lbmonthly.Location = new System.Drawing.Point(36, 26);
-            this.lbmonthly.Name = "lbmonthly";
-            this.lbmonthly.Size = new System.Drawing.Size(206, 27);
-            this.lbmonthly.TabIndex = 8;
-            this.lbmonthly.Text = "Monthly Payment :";
-            // 
-            // lbnumberofpayment
-            // 
-            this.lbnumberofpayment.AutoSize = true;
-            this.lbnumberofpayment.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            this.lbnumberofpayment.Location = new System.Drawing.Point(399, 26);
-            this.lbnumberofpayment.Name = "lbnumberofpayment";
-            this.lbnumberofpayment.Size = new System.Drawing.Size(237, 27);
-            this.lbnumberofpayment.TabIndex = 9;
-            this.lbnumberofpayment.Text = "Number Of Payment :";
-            // 
-            // lbtotalinterest
-            // 
-            this.lbtotalinterest.AutoSize = true;
-            this.lbtotalinterest.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            this.lbtotalinterest.Location = new System.Drawing.Point(770, 26);
-            this.lbtotalinterest.Name = "lbtotalinterest";
-            this.lbtotalinterest.Size = new System.Drawing.Size(165, 27);
-            this.lbtotalinterest.TabIndex = 9;
-            this.lbtotalinterest.Text = "Total Interest :";
-            // 
-            // lbtotalcost
-            // 
-            this.lbtotalcost.AutoSize = true;
-            this.lbtotalcost.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            this.lbtotalcost.Location = new System.Drawing.Point(1108, 27);
-            this.lbtotalcost.Name = "lbtotalcost";
-            this.lbtotalcost.Size = new System.Drawing.Size(224, 27);
-            this.lbtotalcost.TabIndex = 9;
-            this.lbtotalcost.Text = "Total Cost Of Loan :";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1968, 524);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(39, 20);
-            this.label18.TabIndex = 9;
-            this.label18.Text = "<   >";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Garamond", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(797, 16);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(173, 45);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Schedule";
             // 
             // Loan
             // 
