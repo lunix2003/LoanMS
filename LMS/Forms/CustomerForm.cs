@@ -1,4 +1,7 @@
-﻿using LMS.Data;
+﻿
+using LMS.Data;
+using LMS.Models;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,11 +10,11 @@ using System.Windows.Forms;
 
 namespace LMS.Forms
 {
-	public partial class Customer : Form
+	public partial class CustomerForm : Form
 	{
 		int score = 0;
 		BindingSource bsCustomer;
-		public Customer()
+		public CustomerForm()
 		{
 			InitializeComponent();
 		}
@@ -38,8 +41,9 @@ namespace LMS.Forms
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-
-		}
+            int id = int.Parse(dgCustomer.SelectedRows[0].Cells[0].Value.ToString());
+			Customers.Delete(id);
+        }
 
 		private void btnNew_Click(object sender, EventArgs e)
 		{
@@ -67,18 +71,27 @@ namespace LMS.Forms
 			{
 				return;
 			}
-			if(score == 1)
+            Customer cus = new Customer();
+            cus.CustomerName = txtCustomerName.Text.Trim();
+            cus.Sex = SetGender();
+            cus.DoB = dtpDoB.Value;
+            cus.PoB = txtPoB.Text.Trim();
+            cus.Phone = txtPhone.Text.Trim();
+            cus.Email = txtEmail.Text.Trim();
+            if (score == 1)
 			{
 				try
 				{
-					SqlCommand cmdCus = new SqlCommand($"Insert into Customer(CustomerName,Sex,Phone,Email,DOB,POB,isHidden) output inserted.CustomerId values('{txtCustomerName.Text.Trim()}','M','{txtPhone.Text.Trim()}','{txtEmail.Text.Trim()}','{dtpDoB.Value.ToString("yyyy-MM-dd")}','{txtPoB.Text.Trim()}',0)  ", Connection.GetConnection());
-					int id = int.Parse(cmdCus.ExecuteScalar().ToString());
-					if(id > 0)
+					
+					int id = Customers.Add(cus);
+                    if (id > 0)
 					{
 						foreach(DataRow row in dtAddress.Rows)
 						{
-							SqlCommand cmdAddress = new SqlCommand($"Insert into Address(CustomerId,AddressName) values('{id}','{row["AddressName"]}')", Connection.GetConnection());
-							cmdAddress.ExecuteNonQuery();
+							Address addr = new Address();
+							addr.AddressName = row["AddressName"].ToString();
+							addr.CustomerId = id;
+							Addresses.Add(addr);
 						}
 					}
 					MessageBox.Show("Record is saving!.");
@@ -96,14 +109,15 @@ namespace LMS.Forms
 				{
 					try
 					{
-						SqlCommand cmd = new SqlCommand($"Update Customer Set CustomerName='{txtCustomerName.Text.Trim()}',Sex='{SetGender()}',Phone='{txtPhone.Text.Trim()}',Email='{txtEmail.Text.Trim()}',DOB='{dtpDoB.Value.ToString("yyyy-MM-dd")}',POB='{txtPoB.Text.Trim()}' where CustomerId='{id}'", Connection.GetConnection());
-						cmd.ExecuteNonQuery();
-						SqlCommand cmdAddress = new SqlCommand($"Delete from Address where CustomerId='{id}'",Connection.GetConnection());
-                        cmdAddress.ExecuteNonQuery();
+						cus.CustomerId = id;
+						Customers.Update(cus);
+						Addresses.Delete(id);
                         foreach (DataRow row in dtAddress.Rows)
                         {
-                            SqlCommand cmdAddr = new SqlCommand($"Insert into Address(CustomerId,AddressName) values('{id}','{row["AddressName"]}')", Connection.GetConnection());
-                            cmdAddr.ExecuteNonQuery();
+                            Address addr = new Address();
+                            addr.AddressName = row["AddressName"].ToString();
+                            addr.CustomerId = id;
+                            Addresses.Add(addr);
                         }
                     }
 					catch(Exception ex)
@@ -156,11 +170,10 @@ namespace LMS.Forms
 
         public void LoadData()
 		{
-			SqlCommand cmd = new SqlCommand("Select CustomerId,CustomerName from Customer", Connection.GetConnection());
 			DataTable dt = new DataTable();
+			dt = Customers.GetAll();
 			bsCustomer = new BindingSource();
-			SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-			adapter.Fill(dt);
+            
 			dgCustomer.DataSource = dt;
 			bsCustomer.DataSource = dt;
 
@@ -177,7 +190,19 @@ namespace LMS.Forms
 			dgCustomer.Columns[1].Visible = true;
 			dgCustomer.Columns[1].HeaderText = "Customer Name";
 			dgCustomer.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-		}
+            dgCustomer.Columns[2].DataPropertyName = "Sex";
+            dgCustomer.Columns[2].Visible = false;
+            dgCustomer.Columns[3].DataPropertyName = "DOB";
+            dgCustomer.Columns[3].Visible = false;
+            dgCustomer.Columns[4].DataPropertyName = "POB";
+            dgCustomer.Columns[4].Visible = false;
+            dgCustomer.Columns[5].DataPropertyName = "Phone";
+            dgCustomer.Columns[5].Visible = false;
+            dgCustomer.Columns[6].DataPropertyName = "Email";
+            dgCustomer.Columns[6].Visible = false;
+            dgCustomer.Columns[7].DataPropertyName = "ishidden";
+            dgCustomer.Columns[7].Visible = false;
+        }
 
 		void EnableControl(bool result)
 		{
@@ -264,22 +289,20 @@ namespace LMS.Forms
 			EnableControl(false);
 			btnSave.Enabled = false;
 
-			string id = dgCustomer.SelectedRows[0].Cells[0].Value.ToString();
-			SqlCommand cmd = new SqlCommand($"Select * from Customer Where CustomerId='{id}'", Connection.GetConnection());
-			SqlDataReader dataReader = cmd.ExecuteReader();
-			if (dataReader.Read())
+			int id = int.Parse(dgCustomer.SelectedRows[0].Cells[0].Value.ToString());
+			Models.Customer customer = Customers.Get(id);
+			if (customer != null)
 			{
-				txtCustomerName.Text = dataReader["CustomerName"].ToString();
-				txtEmail.Text = dataReader["Email"].ToString();
-				txtPhone.Text = dataReader["Phone"].ToString();
-				txtPoB.Text = dataReader["POB"].ToString();
-				GetGender(char.Parse(dataReader["Sex"].ToString()));
-				dtpDoB.Value = DateTime.Parse(dataReader["DOB"].ToString());
+				txtCustomerName.Text = customer.CustomerName;
+				txtEmail.Text = customer.Email;
+				txtPhone.Text = customer.Phone;
+				txtPoB.Text = customer.PoB;
+				GetGender(customer.Sex);
+				dtpDoB.Value = customer.DoB;
 			}
-			dataReader.Close();
 
-			SqlCommand cmd1 = new SqlCommand($"Select * from Address where CustomerId={id}", Connection.GetConnection());
-			SqlDataAdapter adapter = new SqlDataAdapter(cmd1);
+            OracleCommand cmd1 = new OracleCommand($"Select * from Address where CustomerId={id}", Connection.GetConnection());
+			OracleDataAdapter adapter = new OracleDataAdapter(cmd1);
 			dtAddress = new DataTable();
 			adapter.Fill(dtAddress);
 			dgAddress.DataSource = dtAddress;

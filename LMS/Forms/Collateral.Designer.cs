@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cbCollateralType = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtCollateralCode = new System.Windows.Forms.TextBox();
             this.txtOwnerName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -52,8 +54,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.PictureBox();
-            this.txtCollateralCode = new System.Windows.Forms.TextBox();
-            this.cbCollateralType = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -81,6 +81,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1123, 446);
             this.panel3.TabIndex = 9;
+            // 
+            // cbCollateralType
+            // 
+            this.cbCollateralType.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbCollateralType.Font = new System.Drawing.Font("Garamond", 12F);
+            this.cbCollateralType.FormattingEnabled = true;
+            this.cbCollateralType.Location = new System.Drawing.Point(304, 197);
+            this.cbCollateralType.Name = "cbCollateralType";
+            this.cbCollateralType.Size = new System.Drawing.Size(415, 30);
+            this.cbCollateralType.TabIndex = 6;
             // 
             // btnSave
             // 
@@ -162,6 +172,16 @@
             this.label8.Size = new System.Drawing.Size(119, 22);
             this.label8.TabIndex = 2;
             this.label8.Text = "Description :";
+            // 
+            // txtCollateralCode
+            // 
+            this.txtCollateralCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCollateralCode.Font = new System.Drawing.Font("Garamond", 12F);
+            this.txtCollateralCode.Location = new System.Drawing.Point(304, 98);
+            this.txtCollateralCode.Name = "txtCollateralCode";
+            this.txtCollateralCode.Size = new System.Drawing.Size(415, 30);
+            this.txtCollateralCode.TabIndex = 3;
+            this.txtCollateralCode.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
             // 
             // txtOwnerName
             // 
@@ -339,25 +359,6 @@
             this.btnClose.TabIndex = 3;
             this.btnClose.TabStop = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // txtCollateralCode
-            // 
-            this.txtCollateralCode.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCollateralCode.Font = new System.Drawing.Font("Garamond", 12F);
-            this.txtCollateralCode.Location = new System.Drawing.Point(304, 98);
-            this.txtCollateralCode.Name = "txtCollateralCode";
-            this.txtCollateralCode.Size = new System.Drawing.Size(415, 30);
-            this.txtCollateralCode.TabIndex = 3;
-            this.txtCollateralCode.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
-            // 
-            // cbCollateralType
-            // 
-            this.cbCollateralType.Font = new System.Drawing.Font("Garamond", 12F);
-            this.cbCollateralType.FormattingEnabled = true;
-            this.cbCollateralType.Location = new System.Drawing.Point(304, 197);
-            this.cbCollateralType.Name = "cbCollateralType";
-            this.cbCollateralType.Size = new System.Drawing.Size(415, 30);
-            this.cbCollateralType.TabIndex = 6;
             // 
             // Collateral
             // 

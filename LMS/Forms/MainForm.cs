@@ -42,7 +42,7 @@ namespace LMS.Forms
 			btnLoan.BackColor = secondColor;
 		}
 
-		Customer customer;
+		CustomerForm customer;
 		private void btnDashboard_Click(object sender, EventArgs e)
 		{
 			if (pList.Visible == true) pList.Visible = !pList.Visible;
@@ -128,7 +128,7 @@ namespace LMS.Forms
 			
             if (customer == null)
             {
-                customer = new Customer();
+				customer = new CustomerForm();
                 customer.TopLevel = false;
                 customer.MdiParent = this;
                 this.pContent.Controls.Add(customer);
@@ -137,11 +137,22 @@ namespace LMS.Forms
             customer.Show();
 
         }
-
+		Loan loan;
 		private void btnLoan_Click(object sender, EventArgs e)
 		{
 			btnLoan.BackColor = primaryColor;
-		}
+            btnMenu_Click(sender, e);
+
+            if (loan == null)
+            {
+                loan = new Loan();
+                loan.TopLevel = false;
+                loan.MdiParent = this;
+                this.pContent.Controls.Add(loan);
+            }
+            loan.BringToFront();
+            loan.Show();
+        }
 
 		private void btnManagement_Click(object sender, EventArgs e)
 		{

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace LMS.Data
 {
 	public class Connection
 	{
-		static SqlConnection conn;
-		public static SqlConnection GetConnection()
+		static OracleConnection conn;
+		public static OracleConnection GetConnection()
 		{
-			conn  = new SqlConnection("Data Source=.\\SQLExpress;Database=LMS_Db;Integrated security = true;");
+			conn  = new OracleConnection("Data Source = localhost:1521/XEPDB1; User id = Loan; Password = Loan1234");
 			if(conn != null )
 			{
 				conn.Open();
