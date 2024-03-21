@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -47,7 +48,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.dgCustomer = new System.Windows.Forms.DataGridView();
+            this.dgCreditOfficer = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnEdit = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -55,15 +56,25 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.epCOName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epGender = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epDateOfBirth = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epPhone = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epPoB = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCreditOfficer)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCOName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epGender)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epDateOfBirth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPhone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPoB)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -110,6 +121,7 @@
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // rdFemale
             // 
@@ -258,7 +270,7 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.dgCustomer);
+            this.panel6.Controls.Add(this.dgCreditOfficer);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 46);
             this.panel6.Name = "panel6";
@@ -266,10 +278,10 @@
             this.panel6.Size = new System.Drawing.Size(393, 569);
             this.panel6.TabIndex = 1;
             // 
-            // dgCustomer
+            // dgCreditOfficer
             // 
-            this.dgCustomer.AllowUserToAddRows = false;
-            this.dgCustomer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
+            this.dgCreditOfficer.AllowUserToAddRows = false;
+            this.dgCreditOfficer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -277,20 +289,21 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgCustomer.Location = new System.Drawing.Point(3, 3);
-            this.dgCustomer.Name = "dgCustomer";
-            this.dgCustomer.RowHeadersWidth = 51;
+            this.dgCreditOfficer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgCreditOfficer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCreditOfficer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgCreditOfficer.Location = new System.Drawing.Point(3, 3);
+            this.dgCreditOfficer.Name = "dgCreditOfficer";
+            this.dgCreditOfficer.RowHeadersWidth = 51;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.dgCustomer.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgCustomer.RowTemplate.Height = 24;
-            this.dgCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomer.Size = new System.Drawing.Size(387, 563);
-            this.dgCustomer.TabIndex = 0;
+            this.dgCreditOfficer.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgCreditOfficer.RowTemplate.Height = 24;
+            this.dgCreditOfficer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgCreditOfficer.Size = new System.Drawing.Size(387, 563);
+            this.dgCreditOfficer.TabIndex = 0;
+            this.dgCreditOfficer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCreditOfficer_CellClick);
             // 
             // panel5
             // 
@@ -320,6 +333,7 @@
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // panel8
             // 
@@ -351,6 +365,7 @@
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnNew
             // 
@@ -366,6 +381,7 @@
             this.btnNew.TabIndex = 0;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // panel1
             // 
@@ -376,17 +392,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1555, 81);
             this.panel1.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Garamond", 20F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.label1.Location = new System.Drawing.Point(12, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 38);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Credit Officer";
             // 
             // btnClose
             // 
@@ -401,6 +406,37 @@
             this.btnClose.TabStop = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Garamond", 20F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
+            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(218, 38);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Credit Officer";
+            // 
+            // epCOName
+            // 
+            this.epCOName.ContainerControl = this;
+            // 
+            // epGender
+            // 
+            this.epGender.ContainerControl = this;
+            // 
+            // epDateOfBirth
+            // 
+            this.epDateOfBirth.ContainerControl = this;
+            // 
+            // epPhone
+            // 
+            this.epPhone.ContainerControl = this;
+            // 
+            // epPoB
+            // 
+            this.epPoB.ContainerControl = this;
+            // 
             // CreditOfficer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -413,15 +449,21 @@
             this.Name = "CreditOfficer";
             this.Text = "CreditOfficer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.CreditOfficer_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCreditOfficer)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCOName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epGender)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epDateOfBirth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPhone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPoB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -445,7 +487,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.DataGridView dgCustomer;
+        private System.Windows.Forms.DataGridView dgCreditOfficer;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Panel panel8;
@@ -455,5 +497,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox btnClose;
+        private System.Windows.Forms.ErrorProvider epCOName;
+        private System.Windows.Forms.ErrorProvider epGender;
+        private System.Windows.Forms.ErrorProvider epDateOfBirth;
+        private System.Windows.Forms.ErrorProvider epPhone;
+        private System.Windows.Forms.ErrorProvider epPoB;
     }
 }

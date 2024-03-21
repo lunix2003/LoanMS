@@ -301,10 +301,8 @@ namespace LMS.Forms
 				dtpDoB.Value = customer.DoB;
 			}
 
-            OracleCommand cmd1 = new OracleCommand($"Select * from Address where CustomerId={id}", Connection.GetConnection());
-			OracleDataAdapter adapter = new OracleDataAdapter(cmd1);
 			dtAddress = new DataTable();
-			adapter.Fill(dtAddress);
+			dtAddress = Addresses.Get(id);
 			dgAddress.DataSource = dtAddress;
 
 			dgAddress.RowHeadersVisible = false;

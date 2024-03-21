@@ -96,7 +96,7 @@ namespace LMS.Forms
             collateral.Show();
         }
 
-		CollateralType collateralType;
+		CollateralTypeForm collateralType;
 		private void btnCollateralType_Click(object sender, EventArgs e)
 		{
 			btnCustomer.BackColor = secondColor;
@@ -108,7 +108,7 @@ namespace LMS.Forms
 
             if (collateralType == null)
             {
-                collateralType = new CollateralType();
+                collateralType = new CollateralTypeForm();
                 collateralType.TopLevel = false;
                 collateralType.MdiParent = this;
                 this.pContent.Controls.Add(collateralType);

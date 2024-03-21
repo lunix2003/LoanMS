@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cbCollateralType = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -44,7 +44,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.dgCustomer = new System.Windows.Forms.DataGridView();
+            this.dgCollateral = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnEdit = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -57,7 +57,7 @@
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCollateral)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -85,6 +85,7 @@
             // cbCollateralType
             // 
             this.cbCollateralType.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbCollateralType.Enabled = false;
             this.cbCollateralType.Font = new System.Drawing.Font("Garamond", 12F);
             this.cbCollateralType.FormattingEnabled = true;
             this.cbCollateralType.Location = new System.Drawing.Point(304, 197);
@@ -96,6 +97,7 @@
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(85)))), ((int)(((byte)(131)))));
+            this.btnSave.Enabled = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
@@ -105,6 +107,7 @@
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label6
             // 
@@ -133,6 +136,7 @@
             // txtOwnerNCN
             // 
             this.txtOwnerNCN.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtOwnerNCN.Enabled = false;
             this.txtOwnerNCN.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtOwnerNCN.Location = new System.Drawing.Point(304, 146);
             this.txtOwnerNCN.Name = "txtOwnerNCN";
@@ -154,6 +158,7 @@
             // txtDescription
             // 
             this.txtDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtDescription.Enabled = false;
             this.txtDescription.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtDescription.Location = new System.Drawing.Point(304, 256);
             this.txtDescription.Multiline = true;
@@ -176,22 +181,22 @@
             // txtCollateralCode
             // 
             this.txtCollateralCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCollateralCode.Enabled = false;
             this.txtCollateralCode.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtCollateralCode.Location = new System.Drawing.Point(304, 98);
             this.txtCollateralCode.Name = "txtCollateralCode";
             this.txtCollateralCode.Size = new System.Drawing.Size(415, 30);
             this.txtCollateralCode.TabIndex = 3;
-            this.txtCollateralCode.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
             // 
             // txtOwnerName
             // 
             this.txtOwnerName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtOwnerName.Enabled = false;
             this.txtOwnerName.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtOwnerName.Location = new System.Drawing.Point(304, 46);
             this.txtOwnerName.Name = "txtOwnerName";
             this.txtOwnerName.Size = new System.Drawing.Size(415, 30);
             this.txtOwnerName.TabIndex = 3;
-            this.txtOwnerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
             // 
             // label3
             // 
@@ -217,7 +222,7 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.dgCustomer);
+            this.panel6.Controls.Add(this.dgCollateral);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 46);
             this.panel6.Name = "panel6";
@@ -225,31 +230,31 @@
             this.panel6.Size = new System.Drawing.Size(393, 591);
             this.panel6.TabIndex = 1;
             // 
-            // dgCustomer
+            // dgCollateral
             // 
-            this.dgCustomer.AllowUserToAddRows = false;
-            this.dgCustomer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgCustomer.Location = new System.Drawing.Point(3, 3);
-            this.dgCustomer.Name = "dgCustomer";
-            this.dgCustomer.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.dgCustomer.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgCustomer.RowTemplate.Height = 24;
-            this.dgCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomer.Size = new System.Drawing.Size(387, 585);
-            this.dgCustomer.TabIndex = 0;
+            this.dgCollateral.AllowUserToAddRows = false;
+            this.dgCollateral.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCollateral.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgCollateral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCollateral.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgCollateral.Location = new System.Drawing.Point(3, 3);
+            this.dgCollateral.Name = "dgCollateral";
+            this.dgCollateral.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
+            this.dgCollateral.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgCollateral.RowTemplate.Height = 24;
+            this.dgCollateral.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgCollateral.Size = new System.Drawing.Size(387, 585);
+            this.dgCollateral.TabIndex = 0;
             // 
             // panel5
             // 
@@ -279,6 +284,7 @@
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // panel8
             // 
@@ -310,6 +316,7 @@
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnNew
             // 
@@ -325,6 +332,7 @@
             this.btnNew.TabIndex = 0;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // panel1
             // 
@@ -372,11 +380,12 @@
             this.Name = "Collateral";
             this.Text = "Collateral";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Collateral_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCollateral)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -399,7 +408,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.DataGridView dgCustomer;
+        private System.Windows.Forms.DataGridView dgCollateral;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Panel panel8;

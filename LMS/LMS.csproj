@@ -83,19 +83,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Addresses.cs" />
+    <Compile Include="Data\AppUserPermissions.cs" />
+    <Compile Include="Data\AppUsers.cs" />
+    <Compile Include="Data\Collaterals.cs" />
+    <Compile Include="Data\CollateralTypes.cs" />
     <Compile Include="Data\Connection.cs" />
+    <Compile Include="Data\CreditOfficers.cs" />
     <Compile Include="Data\Customers.cs" />
+    <Compile Include="Data\LoanDetails.cs" />
+    <Compile Include="Data\Loans.cs" />
     <Compile Include="Forms\Collateral.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Collateral.Designer.cs">
       <DependentUpon>Collateral.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CollateralType.cs">
+    <Compile Include="Forms\CollateralTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CollateralType.Designer.cs">
-      <DependentUpon>CollateralType.cs</DependentUpon>
+    <Compile Include="Forms\CollateralTypeForm.Designer.cs">
+      <DependentUpon>CollateralTypeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CreditOfficer.cs">
       <SubType>Form</SubType>
@@ -128,14 +135,21 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\AppUserPermission.cs" />
+    <Compile Include="Models\Collateral.cs" />
+    <Compile Include="Models\CollateralType.cs" />
+    <Compile Include="Models\CreditOfficer.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Loan.cs" />
+    <Compile Include="Models\LoanDetail.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Collateral.resx">
       <DependentUpon>Collateral.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CollateralType.resx">
-      <DependentUpon>CollateralType.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CollateralTypeForm.resx">
+      <DependentUpon>CollateralTypeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreditOfficer.resx">
       <DependentUpon>CreditOfficer.cs</DependentUpon>
