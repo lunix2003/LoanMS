@@ -1,11 +1,7 @@
 ﻿using LMS.Models;
 using Oracle.ManagedDataAccess.Client;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LMS.Data
@@ -28,18 +24,18 @@ namespace LMS.Data
         {
             try
             {
-                OracleCommand cmd = new OracleCommand("LoanDetailAdd", Connection.GetConnection());
+                OracleCommand cmd = new OracleCommand("LOANDETAILADD", Connection.GetConnection());
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("LoanId", loanDetail.LoanId);
-                cmd.Parameters.Add("PeriodNo", loanDetail.PeriodNo);
-                cmd.Parameters.Add("BeginningBalance", loanDetail.BeginningBalance);
-                cmd.Parameters.Add("Principle", loanDetail.Principle);
-                cmd.Parameters.Add("Interest", loanDetail.Interest);
-                cmd.Parameters.Add("Payment", loanDetail.Payment);
-                cmd.Parameters.Add("EndingBalance", loanDetail.EndingBalance);
-                cmd.Parameters.Add("IsPaid", loanDetail.IsPaid);
-                cmd.Parameters.Add("PaidDate", loanDetail.PaidDate);
-                cmd.Parameters.Add("Note", loanDetail.Note);
+                cmd.Parameters.Add("P_LOANID", OracleDbType.Int32).Value = loanDetail.LoanId;
+                cmd.Parameters.Add("P_PERIODNO", OracleDbType.Int32).Value = loanDetail.PeriodNo;
+                cmd.Parameters.Add("P_BEGINNINGBALANCE", OracleDbType.Double).Value  = loanDetail.BeginningBalance;
+                cmd.Parameters.Add("P_PRINCIPLE", OracleDbType.Double).Value=  loanDetail.Principle;
+                cmd.Parameters.Add("P_INTEREST", OracleDbType.Double).Value = loanDetail.Interest;
+                cmd.Parameters.Add("P_PAYMENT", OracleDbType.Double).Value = loanDetail.Payment;
+                cmd.Parameters.Add("P_ENDINGBALANCE", OracleDbType.Double).Value = loanDetail.EndingBalance;
+                cmd.Parameters.Add("P_ISPAID", OracleDbType.Int32).Value = loanDetail.IsPaid;
+                cmd.Parameters.Add("P_PAIDDATE", OracleDbType.Date).Value = loanDetail.PaidDate;
+                cmd.Parameters.Add("P_NOTE", OracleDbType.NVarchar2).Value = loanDetail.Note;
                 cmd.ExecuteNonQuery();
 
             }

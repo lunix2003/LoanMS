@@ -1,6 +1,6 @@
 ﻿namespace LMS.Forms
 {
-    partial class Loan
+    partial class LoanForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblId = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.cbCOName = new System.Windows.Forms.ComboBox();
             this.cbCollateralCode = new System.Windows.Forms.ComboBox();
             this.cbCustomerName = new System.Windows.Forms.ComboBox();
@@ -63,15 +68,37 @@
             this.label13 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgLoanDetail = new System.Windows.Forms.DataGridView();
+            this.LoanDetailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoanId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Period = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BeginningBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Principle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Interest = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndingBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsPaid = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PaidDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
             this.lbtotalcost = new System.Windows.Forms.Label();
             this.lbtotalinterest = new System.Windows.Forms.Label();
             this.lbnumberofpayment = new System.Windows.Forms.Label();
+            this.lblTotalCostOfLoan = new System.Windows.Forms.Label();
+            this.lblTotalInterest = new System.Windows.Forms.Label();
+            this.lblNumberOfPayment = new System.Windows.Forms.Label();
+            this.lblMonthlyPayment = new System.Windows.Forms.Label();
             this.lbmonthly = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnleft = new System.Windows.Forms.PictureBox();
+            this.btnRight = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.epCustomer = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epCollateralCode = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epCOName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epRate = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epDuration = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epCurrency = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epAmount = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -79,12 +106,21 @@
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgLoanDetail)).BeginInit();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnleft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCollateralCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCOName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epRate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epDuration)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCurrency)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epAmount)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.lblId);
+            this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.cbCOName);
             this.panel3.Controls.Add(this.cbCollateralCode);
             this.panel3.Controls.Add(this.cbCustomerName);
@@ -117,9 +153,31 @@
             this.panel3.Size = new System.Drawing.Size(1574, 369);
             this.panel3.TabIndex = 12;
             // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            this.lblId.Location = new System.Drawing.Point(65, 14);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(19, 22);
+            this.lblId.TabIndex = 11;
+            this.lblId.Text = "0";
+            this.lblId.Click += new System.EventHandler(this.lblId_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            this.label15.Location = new System.Drawing.Point(15, 14);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 22);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "ID :";
+            // 
             // cbCOName
             // 
             this.cbCOName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbCOName.Enabled = false;
             this.cbCOName.Font = new System.Drawing.Font("Garamond", 12F);
             this.cbCOName.FormattingEnabled = true;
             this.cbCOName.Location = new System.Drawing.Point(387, 143);
@@ -130,6 +188,7 @@
             // cbCollateralCode
             // 
             this.cbCollateralCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbCollateralCode.Enabled = false;
             this.cbCollateralCode.Font = new System.Drawing.Font("Garamond", 12F);
             this.cbCollateralCode.FormattingEnabled = true;
             this.cbCollateralCode.Location = new System.Drawing.Point(387, 95);
@@ -140,6 +199,7 @@
             // cbCustomerName
             // 
             this.cbCustomerName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbCustomerName.Enabled = false;
             this.cbCustomerName.Font = new System.Drawing.Font("Garamond", 12F);
             this.cbCustomerName.FormattingEnabled = true;
             this.cbCustomerName.Location = new System.Drawing.Point(387, 43);
@@ -150,6 +210,7 @@
             // cbCurrency
             // 
             this.cbCurrency.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbCurrency.Enabled = false;
             this.cbCurrency.Font = new System.Drawing.Font("Garamond", 12F);
             this.cbCurrency.FormattingEnabled = true;
             this.cbCurrency.Items.AddRange(new object[] {
@@ -163,16 +224,21 @@
             // dtpLoanDate
             // 
             this.dtpLoanDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dtpLoanDate.Enabled = false;
             this.dtpLoanDate.Font = new System.Drawing.Font("Garamond", 12F);
             this.dtpLoanDate.Location = new System.Drawing.Point(1019, 43);
+            this.dtpLoanDate.MaxDate = new System.DateTime(2050, 1, 1, 0, 0, 0, 0);
+            this.dtpLoanDate.MinDate = new System.DateTime(1900, 12, 31, 0, 0, 0, 0);
             this.dtpLoanDate.Name = "dtpLoanDate";
             this.dtpLoanDate.Size = new System.Drawing.Size(391, 30);
             this.dtpLoanDate.TabIndex = 6;
+            this.dtpLoanDate.Value = new System.DateTime(2024, 4, 11, 0, 0, 0, 0);
             // 
             // btnGenerate
             // 
             this.btnGenerate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnGenerate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
+            this.btnGenerate.Enabled = false;
             this.btnGenerate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGenerate.ForeColor = System.Drawing.Color.White;
@@ -182,6 +248,7 @@
             this.btnGenerate.TabIndex = 5;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = false;
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // btnRemove
             // 
@@ -196,6 +263,7 @@
             this.btnRemove.TabIndex = 5;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnEdit
             // 
@@ -210,6 +278,7 @@
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnNew
             // 
@@ -224,10 +293,12 @@
             this.btnNew.TabIndex = 5;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtDuration
             // 
             this.txtDuration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtDuration.Enabled = false;
             this.txtDuration.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtDuration.Location = new System.Drawing.Point(715, 250);
             this.txtDuration.Name = "txtDuration";
@@ -237,6 +308,7 @@
             // txtRate
             // 
             this.txtRate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtRate.Enabled = false;
             this.txtRate.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtRate.Location = new System.Drawing.Point(387, 250);
             this.txtRate.Name = "txtRate";
@@ -246,6 +318,7 @@
             // txtCode
             // 
             this.txtCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCode.Enabled = false;
             this.txtCode.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtCode.Location = new System.Drawing.Point(387, 194);
             this.txtCode.Name = "txtCode";
@@ -260,9 +333,9 @@
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
             this.label9.Location = new System.Drawing.Point(491, 253);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(192, 22);
+            this.label9.Size = new System.Drawing.Size(206, 22);
             this.label9.TabIndex = 2;
-            this.label9.Text = "Loan Period In Year :";
+            this.label9.Text = "Loan Period In (Year) :";
             // 
             // label6
             // 
@@ -270,7 +343,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.label6.Location = new System.Drawing.Point(163, 98);
+            this.label6.Location = new System.Drawing.Point(141, 98);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(153, 22);
             this.label6.TabIndex = 2;
@@ -282,11 +355,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.label2.Location = new System.Drawing.Point(163, 253);
+            this.label2.Location = new System.Drawing.Point(141, 253);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(195, 22);
+            this.label2.Size = new System.Drawing.Size(226, 22);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Annual Interest Rate :";
+            this.label2.Text = "Annual Interest Rate(%) :";
             // 
             // label5
             // 
@@ -294,7 +367,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.label5.Location = new System.Drawing.Point(163, 197);
+            this.label5.Location = new System.Drawing.Point(141, 197);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 22);
             this.label5.TabIndex = 2;
@@ -306,7 +379,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.label4.Location = new System.Drawing.Point(163, 146);
+            this.label4.Location = new System.Drawing.Point(141, 146);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 22);
             this.label4.TabIndex = 2;
@@ -315,6 +388,7 @@
             // txtMemo
             // 
             this.txtMemo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtMemo.Enabled = false;
             this.txtMemo.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtMemo.Location = new System.Drawing.Point(1019, 245);
             this.txtMemo.Multiline = true;
@@ -337,6 +411,7 @@
             // txtAmount
             // 
             this.txtAmount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtAmount.Enabled = false;
             this.txtAmount.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtAmount.Location = new System.Drawing.Point(1019, 143);
             this.txtAmount.Name = "txtAmount";
@@ -346,6 +421,7 @@
             // txtPFCode
             // 
             this.txtPFCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPFCode.Enabled = false;
             this.txtPFCode.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtPFCode.Location = new System.Drawing.Point(1019, 194);
             this.txtPFCode.Name = "txtPFCode";
@@ -406,7 +482,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.label3.Location = new System.Drawing.Point(163, 46);
+            this.label3.Location = new System.Drawing.Point(141, 46);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(158, 22);
             this.label3.TabIndex = 2;
@@ -482,20 +558,126 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 507);
             this.panel5.Name = "panel5";
-            this.panel5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel5.Size = new System.Drawing.Size(1574, 329);
+            this.panel5.Padding = new System.Windows.Forms.Padding(4);
+            this.panel5.Size = new System.Drawing.Size(1574, 274);
             this.panel5.TabIndex = 15;
             // 
             // dgLoanDetail
             // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nokora", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgLoanDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgLoanDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgLoanDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LoanDetailId,
+            this.LoanId,
+            this.Period,
+            this.BeginningBalance,
+            this.Principle,
+            this.Interest,
+            this.Payment,
+            this.EndingBalance,
+            this.IsPaid,
+            this.PaidDate,
+            this.Note});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Nokora", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgLoanDetail.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgLoanDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgLoanDetail.Location = new System.Drawing.Point(4, 4);
             this.dgLoanDetail.Name = "dgLoanDetail";
+            this.dgLoanDetail.RowHeadersVisible = false;
             this.dgLoanDetail.RowHeadersWidth = 51;
             this.dgLoanDetail.RowTemplate.Height = 24;
-            this.dgLoanDetail.Size = new System.Drawing.Size(1566, 321);
+            this.dgLoanDetail.Size = new System.Drawing.Size(1566, 266);
             this.dgLoanDetail.TabIndex = 0;
+            // 
+            // LoanDetailId
+            // 
+            this.LoanDetailId.HeaderText = "LoanDetailId";
+            this.LoanDetailId.MinimumWidth = 6;
+            this.LoanDetailId.Name = "LoanDetailId";
+            this.LoanDetailId.Width = 125;
+            // 
+            // LoanId
+            // 
+            this.LoanId.HeaderText = "LoanId";
+            this.LoanId.MinimumWidth = 6;
+            this.LoanId.Name = "LoanId";
+            this.LoanId.Width = 125;
+            // 
+            // Period
+            // 
+            this.Period.HeaderText = "Period";
+            this.Period.MinimumWidth = 6;
+            this.Period.Name = "Period";
+            this.Period.Width = 125;
+            // 
+            // BeginningBalance
+            // 
+            this.BeginningBalance.HeaderText = "Begin";
+            this.BeginningBalance.MinimumWidth = 6;
+            this.BeginningBalance.Name = "BeginningBalance";
+            this.BeginningBalance.Width = 125;
+            // 
+            // Principle
+            // 
+            this.Principle.HeaderText = "Principle";
+            this.Principle.MinimumWidth = 6;
+            this.Principle.Name = "Principle";
+            this.Principle.Width = 125;
+            // 
+            // Interest
+            // 
+            this.Interest.HeaderText = "Interest";
+            this.Interest.MinimumWidth = 6;
+            this.Interest.Name = "Interest";
+            this.Interest.Width = 125;
+            // 
+            // Payment
+            // 
+            this.Payment.HeaderText = "Payment";
+            this.Payment.MinimumWidth = 6;
+            this.Payment.Name = "Payment";
+            this.Payment.Width = 125;
+            // 
+            // EndingBalance
+            // 
+            this.EndingBalance.HeaderText = "Ending";
+            this.EndingBalance.MinimumWidth = 6;
+            this.EndingBalance.Name = "EndingBalance";
+            this.EndingBalance.Width = 125;
+            // 
+            // IsPaid
+            // 
+            this.IsPaid.HeaderText = "Paid";
+            this.IsPaid.MinimumWidth = 6;
+            this.IsPaid.Name = "IsPaid";
+            this.IsPaid.Width = 125;
+            // 
+            // PaidDate
+            // 
+            this.PaidDate.HeaderText = "Date";
+            this.PaidDate.MinimumWidth = 6;
+            this.PaidDate.Name = "PaidDate";
+            this.PaidDate.Width = 125;
+            // 
+            // Note
+            // 
+            this.Note.HeaderText = "Note";
+            this.Note.MinimumWidth = 6;
+            this.Note.Name = "Note";
+            this.Note.Width = 125;
             // 
             // panel6
             // 
@@ -503,9 +685,13 @@
             this.panel6.Controls.Add(this.lbtotalcost);
             this.panel6.Controls.Add(this.lbtotalinterest);
             this.panel6.Controls.Add(this.lbnumberofpayment);
+            this.panel6.Controls.Add(this.lblTotalCostOfLoan);
+            this.panel6.Controls.Add(this.lblTotalInterest);
+            this.panel6.Controls.Add(this.lblNumberOfPayment);
+            this.panel6.Controls.Add(this.lblMonthlyPayment);
             this.panel6.Controls.Add(this.lbmonthly);
-            this.panel6.Controls.Add(this.pictureBox2);
-            this.panel6.Controls.Add(this.pictureBox1);
+            this.panel6.Controls.Add(this.btnleft);
+            this.panel6.Controls.Add(this.btnRight);
             this.panel6.Controls.Add(this.btnSave);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel6.Location = new System.Drawing.Point(0, 781);
@@ -552,6 +738,46 @@
             this.lbnumberofpayment.TabIndex = 9;
             this.lbnumberofpayment.Text = "Number Of Payment :";
             // 
+            // lblTotalCostOfLoan
+            // 
+            this.lblTotalCostOfLoan.AutoSize = true;
+            this.lblTotalCostOfLoan.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTotalCostOfLoan.Location = new System.Drawing.Point(1185, 22);
+            this.lblTotalCostOfLoan.Name = "lblTotalCostOfLoan";
+            this.lblTotalCostOfLoan.Size = new System.Drawing.Size(42, 22);
+            this.lblTotalCostOfLoan.TabIndex = 8;
+            this.lblTotalCostOfLoan.Text = "0.00";
+            // 
+            // lblTotalInterest
+            // 
+            this.lblTotalInterest.AutoSize = true;
+            this.lblTotalInterest.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTotalInterest.Location = new System.Drawing.Point(837, 22);
+            this.lblTotalInterest.Name = "lblTotalInterest";
+            this.lblTotalInterest.Size = new System.Drawing.Size(42, 22);
+            this.lblTotalInterest.TabIndex = 8;
+            this.lblTotalInterest.Text = "0.00";
+            // 
+            // lblNumberOfPayment
+            // 
+            this.lblNumberOfPayment.AutoSize = true;
+            this.lblNumberOfPayment.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            this.lblNumberOfPayment.Location = new System.Drawing.Point(583, 22);
+            this.lblNumberOfPayment.Name = "lblNumberOfPayment";
+            this.lblNumberOfPayment.Size = new System.Drawing.Size(42, 22);
+            this.lblNumberOfPayment.TabIndex = 8;
+            this.lblNumberOfPayment.Text = "0.00";
+            // 
+            // lblMonthlyPayment
+            // 
+            this.lblMonthlyPayment.AutoSize = true;
+            this.lblMonthlyPayment.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            this.lblMonthlyPayment.Location = new System.Drawing.Point(218, 22);
+            this.lblMonthlyPayment.Name = "lblMonthlyPayment";
+            this.lblMonthlyPayment.Size = new System.Drawing.Size(42, 22);
+            this.lblMonthlyPayment.TabIndex = 8;
+            this.lblMonthlyPayment.Text = "0.00";
+            // 
             // lbmonthly
             // 
             this.lbmonthly.AutoSize = true;
@@ -562,32 +788,33 @@
             this.lbmonthly.TabIndex = 8;
             this.lbmonthly.Text = "Monthly Payment :";
             // 
-            // pictureBox2
+            // btnleft
             // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBox2.Image = global::LMS.Properties.Resources.iconnavigationchevron_left_24px;
-            this.pictureBox2.Location = new System.Drawing.Point(1325, 13);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(39, 35);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
+            this.btnleft.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnleft.Image = global::LMS.Properties.Resources.iconnavigationchevron_left_24px;
+            this.btnleft.Location = new System.Drawing.Point(1325, 13);
+            this.btnleft.Name = "btnleft";
+            this.btnleft.Size = new System.Drawing.Size(39, 35);
+            this.btnleft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnleft.TabIndex = 7;
+            this.btnleft.TabStop = false;
             // 
-            // pictureBox1
+            // btnRight
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBox1.Image = global::LMS.Properties.Resources.iconnavigationchevron_right_24px;
-            this.pictureBox1.Location = new System.Drawing.Point(1380, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.btnRight.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnRight.Image = global::LMS.Properties.Resources.iconnavigationchevron_right_24px;
+            this.btnRight.Location = new System.Drawing.Point(1380, 13);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(39, 35);
+            this.btnRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnRight.TabIndex = 6;
+            this.btnRight.TabStop = false;
             // 
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(85)))), ((int)(((byte)(131)))));
+            this.btnSave.Enabled = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
@@ -597,22 +824,52 @@
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // Loan
+            // epCustomer
+            // 
+            this.epCustomer.ContainerControl = this;
+            // 
+            // epCollateralCode
+            // 
+            this.epCollateralCode.ContainerControl = this;
+            // 
+            // epCOName
+            // 
+            this.epCOName.ContainerControl = this;
+            // 
+            // epRate
+            // 
+            this.epRate.ContainerControl = this;
+            // 
+            // epDuration
+            // 
+            this.epDuration.ContainerControl = this;
+            // 
+            // epCurrency
+            // 
+            this.epCurrency.ContainerControl = this;
+            // 
+            // epAmount
+            // 
+            this.epAmount.ContainerControl = this;
+            // 
+            // LoanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1574, 836);
-            this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Loan";
+            this.Name = "LoanForm";
             this.Text = "Loan";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Loan_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -624,8 +881,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgLoanDetail)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnleft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCollateralCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCOName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epDuration)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCurrency)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epAmount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -665,16 +929,40 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.DataGridView dgLoanDetail;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox btnRight;
+        private System.Windows.Forms.PictureBox btnleft;
         private System.Windows.Forms.Label lbtotalcost;
         private System.Windows.Forms.Label lbtotalinterest;
         private System.Windows.Forms.Label lbnumberofpayment;
         private System.Windows.Forms.Label lbmonthly;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblMonthlyPayment;
+        private System.Windows.Forms.Label lblTotalCostOfLoan;
+        private System.Windows.Forms.Label lblTotalInterest;
+        private System.Windows.Forms.Label lblNumberOfPayment;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ErrorProvider epCustomer;
+        private System.Windows.Forms.ErrorProvider epCollateralCode;
+        private System.Windows.Forms.ErrorProvider epCOName;
+        private System.Windows.Forms.ErrorProvider epRate;
+        private System.Windows.Forms.ErrorProvider epDuration;
+        private System.Windows.Forms.ErrorProvider epCurrency;
+        private System.Windows.Forms.ErrorProvider epAmount;
+        private System.Windows.Forms.DataGridView dgLoanDetail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoanDetailId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoanId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Period;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BeginningBalance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Principle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Interest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Payment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndingBalance;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsPaid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PaidDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Note;
     }
 }

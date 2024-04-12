@@ -92,11 +92,11 @@
     <Compile Include="Data\Customers.cs" />
     <Compile Include="Data\LoanDetails.cs" />
     <Compile Include="Data\Loans.cs" />
-    <Compile Include="Forms\Collateral.cs">
+    <Compile Include="Forms\FormCollateral.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Collateral.Designer.cs">
-      <DependentUpon>Collateral.cs</DependentUpon>
+    <Compile Include="Forms\FormCollateral.Designer.cs">
+      <DependentUpon>FormCollateral.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CollateralTypeForm.cs">
       <SubType>Form</SubType>
@@ -116,11 +116,17 @@
     <Compile Include="Forms\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Loan.cs">
+    <Compile Include="Forms\LoanForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Loan.Designer.cs">
-      <DependentUpon>Loan.cs</DependentUpon>
+    <Compile Include="Forms\LoanForm.Designer.cs">
+      <DependentUpon>LoanForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoanSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoanSearch.Designer.cs">
+      <DependentUpon>LoanSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
@@ -145,8 +151,8 @@
     <Compile Include="Models\LoanDetail.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Collateral.resx">
-      <DependentUpon>Collateral.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormCollateral.resx">
+      <DependentUpon>FormCollateral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CollateralTypeForm.resx">
       <DependentUpon>CollateralTypeForm.cs</DependentUpon>
@@ -157,8 +163,11 @@
     <EmbeddedResource Include="Forms\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Loan.resx">
-      <DependentUpon>Loan.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\LoanForm.resx">
+      <DependentUpon>LoanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoanSearch.resx">
+      <DependentUpon>LoanSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

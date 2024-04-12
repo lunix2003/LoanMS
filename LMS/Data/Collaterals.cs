@@ -1,11 +1,7 @@
 ﻿using LMS.Models;
 using Oracle.ManagedDataAccess.Client;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LMS.Data
@@ -21,6 +17,26 @@ namespace LMS.Data
             adapter.Fill(dt);
 
             return dt;
+        }
+        public static Collateral Get(int id)
+        {
+            OracleCommand cmd = new OracleCommand("CollateralGet", Connection.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("CollateralId", id);
+            Collateral collateral = null;
+            OracleDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                collateral = new Collateral();
+                collateral.CollateralCode = dr["CollateralCode"].ToString();
+                collateral.CollateralDescription = dr["CollateralDescription"].ToString();
+                collateral.CollateralTypeId = Convert.ToInt32(dr["CollateralTypeId"].ToString());
+                collateral.OwnerName = dr["OwnerName"].ToString();
+                collateral.OwnerNationalCardNumber = dr["OwnerNationalCardNumber"].ToString();
+                
+            }
+            dr.Close();
+            return collateral;
         }
         public static void Add(Collateral collateral)
         {

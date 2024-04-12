@@ -22,6 +22,21 @@ namespace LMS.Data
 
             return dt;
         }
+        public static CollateralType Get(int id)
+        {
+            OracleCommand cmd = new OracleCommand("CollateralTypeGet", Connection.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("CollateralTypeId", id);
+            OracleDataReader dr = cmd.ExecuteReader();
+            CollateralType collateral = null;
+            if (dr.Read())
+            {
+                collateral = new CollateralType();
+                collateral.CollateralTypeName = dr["CollateralTypeName"].ToString();
+            }
+            dr.Close();
+            return collateral;
+        }
         public static void Add(CollateralType collateralType)
         {
             try

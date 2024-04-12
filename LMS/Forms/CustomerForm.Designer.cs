@@ -502,7 +502,7 @@
             // 
             this.epPoB.ContainerControl = this;
             // 
-            // Customer
+            // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -513,7 +513,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Customer";
+            this.Name = "CustomerForm";
             this.Text = "Customer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Customer_Load);

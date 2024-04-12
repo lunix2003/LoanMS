@@ -11,12 +11,12 @@ namespace LMS.Models
         public int LoanDetailId { get; set; }
         public int LoanId { get; set; }
         public int PeriodNo { get; set; }
-        public float BeginningBalance { get; set; }
-        public float Principle { get; set; }
-        public float Interest { get; set; }
-        public float Payment { get; set; }
-        public float EndingBalance { get; set; }
-        public bool IsPaid { get; set; }
+        public double BeginningBalance { get; set; }
+        public double Principle { get; set; }
+        public double Interest { get; set; }
+        public double Payment { get; set; }
+        public double EndingBalance { get; set; }
+        public int IsPaid { get; set; }
         public DateTime PaidDate { get; set; } = DateTime.Now;
         public string Note { get; set; }
     }

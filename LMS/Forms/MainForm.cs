@@ -75,7 +75,7 @@ namespace LMS.Forms
             creditOfficer.Show();
         }
 
-		Collateral collateral;
+        FormCollateral collateral;
 		private void btnCollateral_Click(object sender, EventArgs e)
 		{
 			btnCustomer.BackColor = secondColor;
@@ -87,7 +87,7 @@ namespace LMS.Forms
 
             if (collateral == null)
             {
-                collateral = new Collateral();
+                collateral = new FormCollateral();
                 collateral.TopLevel = false;
                 collateral.MdiParent = this;
                 this.pContent.Controls.Add(collateral);
@@ -137,7 +137,7 @@ namespace LMS.Forms
             customer.Show();
 
         }
-		Loan loan;
+		LoanForm loan;
 		private void btnLoan_Click(object sender, EventArgs e)
 		{
 			btnLoan.BackColor = primaryColor;
@@ -145,7 +145,7 @@ namespace LMS.Forms
 
             if (loan == null)
             {
-                loan = new Loan();
+                loan = new LoanForm();
                 loan.TopLevel = false;
                 loan.MdiParent = this;
                 this.pContent.Controls.Add(loan);

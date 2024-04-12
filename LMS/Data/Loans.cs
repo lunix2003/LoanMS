@@ -1,21 +1,18 @@
 ﻿using LMS.Models;
 using Oracle.ManagedDataAccess.Client;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LMS.Data
 {
     public static class Loans
     {
-        public static DataTable GetAll()
+        public static DataTable GetAll(int id)
         {
             OracleCommand cmd = new OracleCommand("LoanGet", Connection.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("LoanId", id);
             OracleDataAdapter adapter = new OracleDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);

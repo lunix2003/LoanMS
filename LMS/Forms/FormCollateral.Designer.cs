@@ -1,6 +1,6 @@
 ﻿namespace LMS.Forms
 {
-    partial class Collateral
+    partial class FormCollateral
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cbCollateralType = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -54,6 +55,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.PictureBox();
+            this.epOwnerName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epCollateralCode = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epOwnerNCN = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epCollateralType = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -61,6 +66,10 @@
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epOwnerName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCollateralCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epOwnerNCN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCollateralType)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -234,27 +243,28 @@
             // 
             this.dgCollateral.AllowUserToAddRows = false;
             this.dgCollateral.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCollateral.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCollateral.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgCollateral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCollateral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCollateral.Location = new System.Drawing.Point(3, 3);
             this.dgCollateral.Name = "dgCollateral";
             this.dgCollateral.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.dgCollateral.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
+            this.dgCollateral.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgCollateral.RowTemplate.Height = 24;
             this.dgCollateral.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgCollateral.Size = new System.Drawing.Size(387, 585);
             this.dgCollateral.TabIndex = 0;
+            this.dgCollateral.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCollateral_CellClick);
             // 
             // panel5
             // 
@@ -368,7 +378,23 @@
             this.btnClose.TabStop = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // Collateral
+            // epOwnerName
+            // 
+            this.epOwnerName.ContainerControl = this;
+            // 
+            // epCollateralCode
+            // 
+            this.epCollateralCode.ContainerControl = this;
+            // 
+            // epOwnerNCN
+            // 
+            this.epOwnerNCN.ContainerControl = this;
+            // 
+            // epCollateralType
+            // 
+            this.epCollateralType.ContainerControl = this;
+            // 
+            // FormCollateral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -377,7 +403,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Collateral";
+            this.Name = "FormCollateral";
             this.Text = "Collateral";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Collateral_Load);
@@ -390,6 +416,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epOwnerName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCollateralCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epOwnerNCN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epCollateralType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -420,5 +450,9 @@
         private System.Windows.Forms.PictureBox btnClose;
         private System.Windows.Forms.ComboBox cbCollateralType;
         private System.Windows.Forms.TextBox txtCollateralCode;
+        private System.Windows.Forms.ErrorProvider epOwnerName;
+        private System.Windows.Forms.ErrorProvider epCollateralCode;
+        private System.Windows.Forms.ErrorProvider epOwnerNCN;
+        private System.Windows.Forms.ErrorProvider epCollateralType;
     }
 }
