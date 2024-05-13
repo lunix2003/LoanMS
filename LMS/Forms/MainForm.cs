@@ -1,5 +1,8 @@
-﻿using LMS.Properties;
+﻿using LMS.Data;
+using LMS.Models;
+using LMS.Properties;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,10 +10,57 @@ namespace LMS.Forms
 {
 	public partial class MainForm : Form
 	{
-		public MainForm()
-		{
+		private readonly AppUser user;
+
+        public MainForm(AppUser user)
+        {
 			InitializeComponent();
+            this.user = user;
+			lblUsername.Text = user.UserName;
+			CheckUser();
+        }
+		void CheckUser()
+		{
+			DataTable dt = AppUserPermissions.Get(user.AppUserId);
+			foreach (DataRow dr in dt.Rows)
+			{
+				if (dr["UserPermission"].ToString() == "CustomerView")
+				{
+					btnCustomer.Enabled = true;
+				}
+                if (dr["UserPermission"].ToString() == "CreditOfficerView")
+				{
+					btnCreditOfficer.Enabled = true;
+				}
+                if (dr["UserPermission"].ToString() == "CollateralView")
+				{
+					btnCollateral.Enabled = true;
+				}
+                if (dr["UserPermission"].ToString() == "CollateralTypeView")
+				{
+					btnCollateralType.Enabled = true;
+				}
+				if (dr["UserPermission"].ToString() == "AppUserView")
+				{
+					btnManagement.Enabled = true;
+				}
+                if (dr["UserPermission"].ToString() == "LoanView")
+				{
+					btnLoan.Enabled = true;
+				}
+
+            }
+			if(user.UserType == "admin")
+			{
+				btnManagement.Enabled = true;
+			}
+			else
+			{
+				btnManagement.Enabled =false;
+			}
+
 		}
+
 		Color primaryColor = Color.FromArgb(32, 85, 131);
 		Color secondColor = Color.FromArgb(12, 32, 50);
 		private void btnListCenter_Click(object sender, EventArgs e)
@@ -66,7 +116,7 @@ namespace LMS.Forms
 
             if (creditOfficer == null)
             {
-                creditOfficer = new CreditOfficer();
+                creditOfficer = new CreditOfficer(user.AppUserId);
                 creditOfficer.TopLevel = false;
                 creditOfficer.MdiParent = this;
                 this.pContent.Controls.Add(creditOfficer);
@@ -87,7 +137,7 @@ namespace LMS.Forms
 
             if (collateral == null)
             {
-                collateral = new FormCollateral();
+                collateral = new FormCollateral(user.AppUserId);
                 collateral.TopLevel = false;
                 collateral.MdiParent = this;
                 this.pContent.Controls.Add(collateral);
@@ -128,7 +178,7 @@ namespace LMS.Forms
 			
             if (customer == null)
             {
-				customer = new CustomerForm();
+				customer = new CustomerForm(user.AppUserId);
                 customer.TopLevel = false;
                 customer.MdiParent = this;
                 this.pContent.Controls.Add(customer);
@@ -145,20 +195,34 @@ namespace LMS.Forms
 
             if (loan == null)
             {
-                loan = new LoanForm();
+                loan = new LoanForm(user.AppUserId);
                 loan.TopLevel = false;
                 loan.MdiParent = this;
+
                 this.pContent.Controls.Add(loan);
             }
             loan.BringToFront();
             loan.Show();
         }
+		ManagementForm manageUser;
 
-		private void btnManagement_Click(object sender, EventArgs e)
+        private void btnManagement_Click(object sender, EventArgs e)
 		{
 			btnManagement.ForeColor = Color.FromArgb(44, 117, 181);
 			btnManagement.Cursor = Cursors.Hand;
-		}
+            btnMenu_Click(sender, e);
+
+            if (manageUser == null)
+            {
+                manageUser = new ManagementForm();
+                manageUser.TopLevel = false;
+                manageUser.MdiParent = this;
+                this.pContent.Controls.Add(manageUser);
+            }
+            manageUser.BringToFront();
+            manageUser.Show();
+
+        }
 
 		private void btnClose_Click(object sender, EventArgs e)
 		{
@@ -183,6 +247,9 @@ namespace LMS.Forms
 		private void lblLogout_Click(object sender, EventArgs e)
 		{
 			lblLogout.ForeColor = Color.FromArgb(44, 117, 181);
+			Login login = new Login();
+			login.ShowDialog();
+			this.Hide();
 		}
 
 		private void lblLogout_MouseHover(object sender, EventArgs e)

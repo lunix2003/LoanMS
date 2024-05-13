@@ -2,6 +2,7 @@
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Data;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Windows.Forms;
 
 namespace LMS.Data
@@ -52,6 +53,23 @@ namespace LMS.Data
                 OracleCommand cmd = new OracleCommand("LoanDetailDelete", Connection.GetConnection());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("LoanId", loanId);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public static void Update(LoanDetail detail)
+        {
+            try
+            {
+                OracleCommand cmd = new OracleCommand("LoanDetailUpdate", Connection.GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("LoanDetailId", detail.LoanDetailId);
+                cmd.Parameters.Add("IsPaid", detail.IsPaid);
+                cmd.Parameters.Add("Note", detail.Note);
                 cmd.ExecuteNonQuery();
 
             }

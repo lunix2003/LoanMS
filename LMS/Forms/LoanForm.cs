@@ -2,7 +2,6 @@
 using LMS.Models;
 using System;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace LMS.Forms
@@ -10,11 +9,34 @@ namespace LMS.Forms
     public partial class LoanForm : Form
     {
         DataTable dt;
-        public LoanForm()
+        public LoanForm(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
+            CheckUser();
         }
+        void CheckUser()
+        {
+            DataTable dt = AppUserPermissions.Get(userId);
+            foreach (DataRow dr in dt.Rows)
+            {
+                
+                if (dr["UserPermission"].ToString() == "LoanModify")
+                {
+                    btnEdit.Enabled = true;
+                }
+                if (dr["UserPermission"].ToString() == "LoanCreate")
+                {
+                    btnNew.Enabled = true;
+                }
+                if (dr["UserPermission"].ToString() == "LoanDelete")
+                {
+                    btnRemove.Enabled = true;
+                }
+                
 
+            }
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -36,39 +58,91 @@ namespace LMS.Forms
             loan.LoanAmount = Convert.ToDouble(txtAmount.Text.Trim());
             loan.PaymentFrequencyCode = txtPFCode.Text == "" ? 0 : Convert.ToDouble(txtPFCode.Text.Trim());
             loan.Memo = txtMemo.Text.Trim();
-
-            if(loan != null)
+            if(num == 0)
             {
-                int id = Loans.Add(loan);
-                if(id > 0)
+                if(loan != null)
                 {
-                    foreach(DataRow row in dt.Rows)
+                    int id = Loans.Add(loan);
+                    if(id > 0)
                     {
-                        LoanDetail detail = new LoanDetail();
-                        detail.LoanId = id;
-                        detail.PaidDate = Convert.ToDateTime(row["Date"].ToString());
-                        detail.Interest = Convert.ToDouble(row["Interest"].ToString());
-                        detail.BeginningBalance = Convert.ToDouble(row["Begin"].ToString());
-                        detail.Principle = Convert.ToDouble(row["Principal"].ToString());
-                        detail.EndingBalance = Convert.ToDouble(row["End"].ToString());
-                        detail.Payment = Convert.ToDouble(row["Payment"].ToString());
-                        detail.PeriodNo = Convert.ToInt32(row["No"].ToString());
-                        detail.Note = row["Note"].ToString();
-                        if (!Convert.IsDBNull(row["Paid"]))
-                            //de.AppUserId = Convert.ToInt32(reader["AppUserId"].ToString());
-                            detail.IsPaid = GetIsPaid(Convert.ToBoolean(row["Paid"]));
-                        else detail.IsPaid = 0;
-                        if (detail != null)
+                        foreach(DataRow row in dt.Rows)
                         {
-                            LoanDetails.Add(detail);
+                            LoanDetail detail = new LoanDetail();
+                            detail.LoanId = id;
+                            detail.PaidDate = Convert.ToDateTime(row["Date"].ToString());
+                            detail.Interest = Convert.ToDouble(row["Interest"].ToString());
+                            detail.BeginningBalance = Convert.ToDouble(row["Begin"].ToString());
+                            detail.Principle = Convert.ToDouble(row["Principal"].ToString());
+                            detail.EndingBalance = Convert.ToDouble(row["End"].ToString());
+                            detail.Payment = Convert.ToDouble(row["Payment"].ToString());
+                            detail.PeriodNo = Convert.ToInt32(row["No"].ToString());
+                            detail.Note = row["Note"].ToString();
+                            if (!Convert.IsDBNull(row["Paid"]))
+                                detail.IsPaid = GetIsPaid(Convert.ToBoolean(row["Paid"]));
+                            else detail.IsPaid = 0;
+                            if (detail != null)
+                            {
+                                LoanDetails.Add(detail);
+                            }
+                        }
+                        MessageBox.Show("Record has Saved successfully");
+                        lblId.Text = id.ToString();
+                    }
+                    //Application.Restart();
+                    //LoadLoan();
+                    this.Refresh();
+                }
+            }
+            else if(num == 1)
+            {
+                loan.LoanId = Convert.ToInt32(lblId.Text.Trim());
+                if(loan != null)
+                {
+                    Loans.Update(loan);
+                    if(liste == 0)
+                    {
+                        for(int i = 0; i < dgLoanDetail.Rows.Count; i++)
+                        {
+                            LoanDetail detail = new LoanDetail();
+                            detail.LoanDetailId = Convert.ToInt32(dgLoanDetail.Rows[i].Cells["LoanDetailId"].Value);
+                            if (!Convert.IsDBNull(dgLoanDetail.Rows[i].Cells["IsPaid"].Value))
+                                detail.IsPaid = GetIsPaid(Convert.ToBoolean(dgLoanDetail.Rows[i].Cells["IsPaid"].Value));
+                            else detail.IsPaid = 0;
+                            detail.Note = dgLoanDetail.Rows[i].Cells["Note"].Value.ToString();
+
+                            LoanDetails.Update(detail);
                         }
                     }
-                    MessageBox.Show("Record has Saved successfully");
-                    lblId.Text = id.ToString();
+                    else
+                    {
+                        LoanDetails.Delete(loan.LoanId);
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            LoanDetail detail = new LoanDetail();
+                            detail.LoanId = loan.LoanId;
+                            detail.PaidDate = Convert.ToDateTime(row["Date"].ToString());
+                            detail.Interest = Convert.ToDouble(row["Interest"].ToString());
+                            detail.BeginningBalance = Convert.ToDouble(row["Begin"].ToString());
+                            detail.Principle = Convert.ToDouble(row["Principal"].ToString());
+                            detail.EndingBalance = Convert.ToDouble(row["End"].ToString());
+                            detail.Payment = Convert.ToDouble(row["Payment"].ToString());
+                            detail.PeriodNo = Convert.ToInt32(row["No"].ToString());
+                            detail.Note = row["Note"].ToString();
+                            if (!Convert.IsDBNull(row["Paid"]))
+                                detail.IsPaid = GetIsPaid(Convert.ToBoolean(row["Paid"]));
+                            else detail.IsPaid = 0;
+                            if (detail != null)
+                            {
+                                LoanDetails.Add(detail);
+                            }
+                        }
+                    }
+                    MessageBox.Show("Record has Updated");
+                    liste = 0;
+                    LoadLoan();
                 }
-                LoadLoan();
+                dt = new DataTable();
             }
-
         }
 
         private int GetIsPaid(bool result)
@@ -86,9 +160,9 @@ namespace LMS.Forms
         private char GetCurrency()
         {
             char result;
-            if(cbCurrency.Text == "Dollar")
+            if(cbCurrency.Text == "$")
             {
-                result = 'D';
+                result = '$';
             }
             else
             {
@@ -128,22 +202,35 @@ namespace LMS.Forms
         {
             EnableControls(true);
             Clear();
+            num = 0;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             EnableControls(true);
+            num = 1;
+            cbCurrency.SelectedIndex = 1;
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-
+            int id = Convert.ToInt32(lblId.Text);
+            if ( id > 0)
+            {
+                DialogResult result = MessageBox.Show("Do You Want to Delete this record?","Info",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                if(result == DialogResult.Yes)
+                {
+                    Loans.Delete(id);
+                    Loan_Load(null, null);
+                }
+            }
         }
         int period_val;
         int days, months,years;
         double principle_val, Rate, beginBalance,endBalance,interest_val,payment_val,amount;
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            liste = 1;
             dtpLoanDate.Value = DateTime.Now;
             months = Convert.ToInt32(dtpLoanDate.Value.Month);
             years = Convert.ToInt32(dtpLoanDate.Value.Year);
@@ -164,8 +251,8 @@ namespace LMS.Forms
                     new DataColumn("Interest", typeof(double)),
                     new DataColumn("Payment", typeof(double)),
                     new DataColumn("End", typeof(double)),
-                    new DataColumn("Date", typeof(string)),
                     new DataColumn("Paid", typeof(bool)),
+                    new DataColumn("Date", typeof(string)),
                     new DataColumn("Note", typeof(string))
 
             });
@@ -179,7 +266,7 @@ namespace LMS.Forms
                 principle_val = payment_val - interest_val;
                 endBalance = beginBalance - principle_val;
                 totalInterest += interest_val;
-                dt.Rows.Add(j.ToString(), Math.Round(beginBalance,2).ToString("#,##0.00"), Math.Round(principle_val,2).ToString("#,#00.00"), Math.Round(interest_val,2).ToString("#,#00.00"), Math.Round(payment_val,2).ToString("#,#00.0000"), Math.Round(endBalance,2).ToString("#,#00.00"), days + "/" + months + "/" + years);
+                dt.Rows.Add(j.ToString(), Math.Round(beginBalance,2).ToString("#,##0.00"), Math.Round(principle_val,2).ToString("#,#00.00"), Math.Round(interest_val,2).ToString("#,#00.00"), Math.Round(payment_val,2).ToString("#,#00.0000"), Math.Round(endBalance,2).ToString("#,#00.00"),0, days + "/" + months + "/" + years);
                 if (months == 12)
                 {
                     months = 1;
@@ -196,7 +283,7 @@ namespace LMS.Forms
             lblNumberOfPayment.Text = dgLoanDetail.Rows.Count.ToString();   
             lblMonthlyPayment.Text = payment_val.ToString("#,#00.00");
             lblTotalInterest.Text = totalInterest.ToString("#,#00.00"); 
-
+            
 
         }
 
@@ -213,12 +300,34 @@ namespace LMS.Forms
         DataTable dtLoan;
         private BindingSource bsLoan;
         private double totalCostOfLoan= 0;
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            bsLoan.CancelEdit();
+            bsLoan.MoveNext();
+            totalCostOfLoan = 0;
+            totalInterest = 0;
+            LoadLoanDetail();
+        }
+
+        private void btnleft_Click(object sender, EventArgs e)
+        {
+            bsLoan.CancelEdit();
+            bsLoan.MovePrevious();
+            totalCostOfLoan = 0;
+            totalInterest = 0;
+            LoadLoanDetail();
+        }
+
         private double totalInterest;
+        private int num;
+        private int liste = 0;
+        private readonly int userId;
 
         void LoadLoan()
         {
             dtLoan = new DataTable();
-            dtLoan = Loans.GetAll(Convert.ToInt32(lblId.Text));
+            dtLoan = Loans.GetAll(0);
             bsLoan = new BindingSource();
             bsLoan.DataSource = dtLoan;
 
@@ -268,27 +377,27 @@ namespace LMS.Forms
             dgLoanDetail.Columns[3].HeaderText = "Beginning Balance";
             dgLoanDetail.Columns[3].Width = 200;
             dgLoanDetail.Columns[3].DataPropertyName = "BEGINNINGBALANCE";
-            dgLoanDetail.Columns[3].DefaultCellStyle.Format = cbCurrency.Text == "D" ? "$ #,#00.00" : "R #,#00.00";
+            dgLoanDetail.Columns[3].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
             dgLoanDetail.Columns[3].Visible = true;
             dgLoanDetail.Columns[4].HeaderText = "Principle";
             dgLoanDetail.Columns[4].Width = 150;
             dgLoanDetail.Columns[4].DataPropertyName = "Principle";
-            dgLoanDetail.Columns[4].DefaultCellStyle.Format = cbCurrency.Text == "D" ? "$ #,#00.00" : "R #,#00.00";
+            dgLoanDetail.Columns[4].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
             dgLoanDetail.Columns[4].Visible = true;
             dgLoanDetail.Columns[5].HeaderText = "Interest";
             dgLoanDetail.Columns[5].Width = 150;
             dgLoanDetail.Columns[5].DataPropertyName = "Interest";
-            dgLoanDetail.Columns[5].DefaultCellStyle.Format = cbCurrency.Text == "D" ? "$ #,#00.00" : "R #,#00.00";
+            dgLoanDetail.Columns[5].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
             dgLoanDetail.Columns[5].Visible = true;
             dgLoanDetail.Columns[6].HeaderText = "Payment";
             dgLoanDetail.Columns[6].Width = 150;
             dgLoanDetail.Columns[6].DataPropertyName = "Payment";
-            dgLoanDetail.Columns[6].DefaultCellStyle.Format = cbCurrency.Text == "D" ? "$ #,#00.00" : "R #,#00.00";
+            dgLoanDetail.Columns[6].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
             dgLoanDetail.Columns[6].Visible = true;
             dgLoanDetail.Columns[7].HeaderText = "Ending Balance";
             dgLoanDetail.Columns[7].Width = 200;
             dgLoanDetail.Columns[7].DataPropertyName = "ENDINGBALANCE";
-            dgLoanDetail.Columns[7].DefaultCellStyle.Format = cbCurrency.Text == "D" ? "$ #,#00.00" : "R #,#00.00";
+            dgLoanDetail.Columns[7].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
             dgLoanDetail.Columns[7].Visible = true;
             dgLoanDetail.Columns[8].HeaderText = "Paid";
             dgLoanDetail.Columns[8].DataPropertyName = "ISPAID";
@@ -306,6 +415,7 @@ namespace LMS.Forms
             dgLoanDetail.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgLoanDetail.Columns[10].Visible = true;
             dgLoanDetail.DataSource = LoanDetails.GetAll(id);
+            dt = LoanDetails.GetAll(id);
 
             if(dgLoanDetail.Rows.Count > 0)
             {
@@ -316,17 +426,18 @@ namespace LMS.Forms
 
                 txtRate.Text = (((interest_val * 100) / beginBalance) * 12).ToString("#,##0.00");
 
-                totalCostOfLoan = Convert.ToDouble(dgLoanDetail.Rows[0].Cells["Payment"].Value.ToString()) * count;
+                //totalCostOfLoan = Convert.ToDouble(dgLoanDetail.Rows[0].Cells["Payment"].Value.ToString()) * count;
 
                 totalInterest = 0;
                 for (int i = 0; i < count; i++)
                 {
                     totalInterest += Convert.ToDouble(dgLoanDetail.Rows[i].Cells["Interest"].Value.ToString());
+                    totalCostOfLoan += Convert.ToDouble(dgLoanDetail.Rows[i].Cells["Payment"].Value.ToString());
                 }
 
                 lblTotalCostOfLoan.Text = cbCurrency.Text == "R" ? Math.Round(totalCostOfLoan, 2).ToString("R #,##0.00") : Math.Round(totalCostOfLoan, 2).ToString("$ #,##0.00");
                 lblNumberOfPayment.Text = count.ToString();
-                lblMonthlyPayment.Text = cbCurrency.Text == "R" ? "R " + Math.Round(Convert.ToDouble(dgLoanDetail.Rows[0].Cells["Payment"].Value.ToString()), 2) : "$ " + Math.Round(Convert.ToDouble(dgLoanDetail.Rows[0].Cells["Payment"].Value.ToString()), 2);
+                lblMonthlyPayment.Text = cbCurrency.Text == "R" ? Math.Round(Convert.ToDouble(dgLoanDetail.Rows[0].Cells["Payment"].Value), 2).ToString("R #,##0.00") : Math.Round(Convert.ToDouble(dgLoanDetail.Rows[0].Cells["Payment"].Value), 2).ToString("$ #,##0.00");
                 lblTotalInterest.Text = cbCurrency.Text == "R" ? Math.Round(Convert.ToDouble(totalInterest), 2).ToString("R #,##0.00") : Math.Round(Convert.ToDouble(totalInterest), 2).ToString("$ #,##0.00");
             }
             //if(date.Year > DateTime.Now.Year || date.Month > DateTime.Now.Month && date.Day > DateTime.Now.Day && status > 0)
@@ -435,6 +546,21 @@ namespace LMS.Forms
             dtpLoanDate.Enabled = result;
             btnSave.Enabled = result;
             btnGenerate.Enabled = result;
+            dgLoanDetail.ReadOnly = !result;
+            dgLoanDetail.Columns[0].ReadOnly = true;
+            dgLoanDetail.Columns[1].ReadOnly = true;
+            dgLoanDetail.Columns[2].ReadOnly = true;
+            dgLoanDetail.Columns[3].ReadOnly = true;
+            dgLoanDetail.Columns[4].ReadOnly = true;
+            dgLoanDetail.Columns[5].ReadOnly = true;
+            dgLoanDetail.Columns[6].ReadOnly = true;
+            dgLoanDetail.Columns[7].ReadOnly = true;
+            dgLoanDetail.Columns[8].ReadOnly = !result;
+            if(liste != 1)
+            {
+                dgLoanDetail.Columns[9].ReadOnly = true;
+                dgLoanDetail.Columns[10].ReadOnly = !result;
+            }
         }
     }
 }

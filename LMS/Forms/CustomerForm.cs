@@ -14,12 +14,35 @@ namespace LMS.Forms
 	{
 		int score = 0;
 		BindingSource bsCustomer;
-		public CustomerForm()
+		public CustomerForm(int userId)
 		{
 			InitializeComponent();
-		}
+            this.userId = userId;
+			CheckUser();
+        }
+        void CheckUser()
+        {
+            DataTable dt = AppUserPermissions.Get(userId);
+            foreach (DataRow dr in dt.Rows)
+            {
 
-		private void btnClose_Click(object sender, EventArgs e)
+                if (dr["UserPermission"].ToString() == "CustomerModify")
+                {
+                    btnEdit.Enabled = true;
+                }
+                if (dr["UserPermission"].ToString() == "CustomerCreate")
+                {
+                    btnNew.Enabled = true;
+                }
+                if (dr["UserPermission"].ToString() == "CustomerDelete")
+                {
+                    btnDelete.Enabled = true;
+                }
+
+
+            }
+        }
+        private void btnClose_Click(object sender, EventArgs e)
 		{
 			LoadData();
 			this.Hide();
@@ -284,7 +307,9 @@ namespace LMS.Forms
 			return result;
 		}
 		DataTable dtAddress;
-		private void dgCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
+        private readonly int userId;
+
+        private void dgCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			EnableControl(false);
 			btnSave.Enabled = false;

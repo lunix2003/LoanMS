@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblId = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -214,8 +214,8 @@
             this.cbCurrency.Font = new System.Drawing.Font("Garamond", 12F);
             this.cbCurrency.FormattingEnabled = true;
             this.cbCurrency.Items.AddRange(new object[] {
-            "Riels",
-            "Dollar"});
+            "$",
+            "R"});
             this.cbCurrency.Location = new System.Drawing.Point(1019, 92);
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(391, 30);
@@ -254,6 +254,7 @@
             // 
             this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(85)))), ((int)(((byte)(131)))));
+            this.btnRemove.Enabled = false;
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnRemove.ForeColor = System.Drawing.Color.White;
@@ -269,6 +270,7 @@
             // 
             this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(85)))), ((int)(((byte)(131)))));
+            this.btnEdit.Enabled = false;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEdit.ForeColor = System.Drawing.Color.White;
@@ -284,6 +286,7 @@
             // 
             this.btnNew.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(85)))), ((int)(((byte)(131)))));
+            this.btnNew.Enabled = false;
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNew.ForeColor = System.Drawing.Color.White;
@@ -564,14 +567,14 @@
             // 
             // dgLoanDetail
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nokora", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgLoanDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nokora", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgLoanDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgLoanDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgLoanDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LoanDetailId,
@@ -585,17 +588,18 @@
             this.IsPaid,
             this.PaidDate,
             this.Note});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Nokora", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgLoanDetail.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nokora", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgLoanDetail.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgLoanDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgLoanDetail.Location = new System.Drawing.Point(4, 4);
             this.dgLoanDetail.Name = "dgLoanDetail";
+            this.dgLoanDetail.ReadOnly = true;
             this.dgLoanDetail.RowHeadersVisible = false;
             this.dgLoanDetail.RowHeadersWidth = 51;
             this.dgLoanDetail.RowTemplate.Height = 24;
@@ -607,6 +611,7 @@
             this.LoanDetailId.HeaderText = "LoanDetailId";
             this.LoanDetailId.MinimumWidth = 6;
             this.LoanDetailId.Name = "LoanDetailId";
+            this.LoanDetailId.ReadOnly = true;
             this.LoanDetailId.Width = 125;
             // 
             // LoanId
@@ -614,6 +619,7 @@
             this.LoanId.HeaderText = "LoanId";
             this.LoanId.MinimumWidth = 6;
             this.LoanId.Name = "LoanId";
+            this.LoanId.ReadOnly = true;
             this.LoanId.Width = 125;
             // 
             // Period
@@ -621,6 +627,7 @@
             this.Period.HeaderText = "Period";
             this.Period.MinimumWidth = 6;
             this.Period.Name = "Period";
+            this.Period.ReadOnly = true;
             this.Period.Width = 125;
             // 
             // BeginningBalance
@@ -628,6 +635,7 @@
             this.BeginningBalance.HeaderText = "Begin";
             this.BeginningBalance.MinimumWidth = 6;
             this.BeginningBalance.Name = "BeginningBalance";
+            this.BeginningBalance.ReadOnly = true;
             this.BeginningBalance.Width = 125;
             // 
             // Principle
@@ -635,6 +643,7 @@
             this.Principle.HeaderText = "Principle";
             this.Principle.MinimumWidth = 6;
             this.Principle.Name = "Principle";
+            this.Principle.ReadOnly = true;
             this.Principle.Width = 125;
             // 
             // Interest
@@ -642,6 +651,7 @@
             this.Interest.HeaderText = "Interest";
             this.Interest.MinimumWidth = 6;
             this.Interest.Name = "Interest";
+            this.Interest.ReadOnly = true;
             this.Interest.Width = 125;
             // 
             // Payment
@@ -649,6 +659,7 @@
             this.Payment.HeaderText = "Payment";
             this.Payment.MinimumWidth = 6;
             this.Payment.Name = "Payment";
+            this.Payment.ReadOnly = true;
             this.Payment.Width = 125;
             // 
             // EndingBalance
@@ -656,6 +667,7 @@
             this.EndingBalance.HeaderText = "Ending";
             this.EndingBalance.MinimumWidth = 6;
             this.EndingBalance.Name = "EndingBalance";
+            this.EndingBalance.ReadOnly = true;
             this.EndingBalance.Width = 125;
             // 
             // IsPaid
@@ -663,6 +675,7 @@
             this.IsPaid.HeaderText = "Paid";
             this.IsPaid.MinimumWidth = 6;
             this.IsPaid.Name = "IsPaid";
+            this.IsPaid.ReadOnly = true;
             this.IsPaid.Width = 125;
             // 
             // PaidDate
@@ -670,6 +683,7 @@
             this.PaidDate.HeaderText = "Date";
             this.PaidDate.MinimumWidth = 6;
             this.PaidDate.Name = "PaidDate";
+            this.PaidDate.ReadOnly = true;
             this.PaidDate.Width = 125;
             // 
             // Note
@@ -677,6 +691,7 @@
             this.Note.HeaderText = "Note";
             this.Note.MinimumWidth = 6;
             this.Note.Name = "Note";
+            this.Note.ReadOnly = true;
             this.Note.Width = 125;
             // 
             // panel6
@@ -798,6 +813,7 @@
             this.btnleft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnleft.TabIndex = 7;
             this.btnleft.TabStop = false;
+            this.btnleft.Click += new System.EventHandler(this.btnleft_Click);
             // 
             // btnRight
             // 
@@ -809,6 +825,7 @@
             this.btnRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnRight.TabIndex = 6;
             this.btnRight.TabStop = false;
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // btnSave
             // 

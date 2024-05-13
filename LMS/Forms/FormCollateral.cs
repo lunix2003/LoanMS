@@ -10,11 +10,34 @@ namespace LMS.Forms
     {
         private BindingSource bsCollateral;
 
-        public FormCollateral()
+        public FormCollateral(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
+            CheckUser();
         }
+        void CheckUser()
+        {
+            DataTable dt = AppUserPermissions.Get(userId);
+            foreach (DataRow dr in dt.Rows)
+            {
 
+                if (dr["UserPermission"].ToString() == "CollateralModify")
+                {
+                    btnEdit.Enabled = true;
+                }
+                if (dr["UserPermission"].ToString() == "CollateralCreate")
+                {
+                    btnNew.Enabled = true;
+                }
+                if (dr["UserPermission"].ToString() == "CollateralDelete")
+                {
+                    btnDelete.Enabled = true;
+                }
+
+
+            }
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -164,6 +187,8 @@ namespace LMS.Forms
             EnableControl(true);
         }
         int id = 0;
+        private int userId;
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             id = int.Parse(dgCollateral.SelectedRows[0].Cells[0].Value.ToString());

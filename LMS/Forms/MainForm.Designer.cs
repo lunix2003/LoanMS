@@ -148,6 +148,7 @@
             // btnCreditOfficer
             // 
             this.btnCreditOfficer.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCreditOfficer.Enabled = false;
             this.btnCreditOfficer.FlatAppearance.BorderSize = 0;
             this.btnCreditOfficer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreditOfficer.Font = new System.Drawing.Font("Georgia", 10F);
@@ -183,6 +184,7 @@
             // btnCollateralType
             // 
             this.btnCollateralType.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCollateralType.Enabled = false;
             this.btnCollateralType.FlatAppearance.BorderSize = 0;
             this.btnCollateralType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCollateralType.Font = new System.Drawing.Font("Georgia", 10F);
@@ -218,6 +220,7 @@
             // btnCollateral
             // 
             this.btnCollateral.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCollateral.Enabled = false;
             this.btnCollateral.FlatAppearance.BorderSize = 0;
             this.btnCollateral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCollateral.Font = new System.Drawing.Font("Georgia", 10F);
@@ -253,6 +256,7 @@
             // btnCustomer
             // 
             this.btnCustomer.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCustomer.Enabled = false;
             this.btnCustomer.FlatAppearance.BorderSize = 0;
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Georgia", 10F);
@@ -278,6 +282,7 @@
             // btnManagement
             // 
             this.btnManagement.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnManagement.Enabled = false;
             this.btnManagement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
             this.btnManagement.FlatAppearance.BorderSize = 0;
             this.btnManagement.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
@@ -343,6 +348,7 @@
             // btnLoan
             // 
             this.btnLoan.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnLoan.Enabled = false;
             this.btnLoan.FlatAppearance.BorderSize = 0;
             this.btnLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoan.Font = new System.Drawing.Font("Georgia", 10F);

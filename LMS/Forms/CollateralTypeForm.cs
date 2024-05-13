@@ -159,6 +159,7 @@ namespace LMS.Forms
         private void CollateralTypeForm_Load(object sender, EventArgs e)
         {
             LoadData();
+            EnableControl(false);
         }
 
         private void dgCollateralType_CellClick(object sender, DataGridViewCellEventArgs e)

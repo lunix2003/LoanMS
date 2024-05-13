@@ -18,12 +18,36 @@ namespace LMS.Forms
     {
         private BindingSource bsCreditOfficer;
         private int score;
+        private int userId;
 
-        public CreditOfficer()
+        public CreditOfficer(int userId)
         {
             InitializeComponent();
+            this.userId=userId;
+            CheckUser();
         }
+        void CheckUser()
+        {
+            DataTable dt = AppUserPermissions.Get(userId);
+            foreach (DataRow dr in dt.Rows)
+            {
 
+                if (dr["UserPermission"].ToString() == "CreditOfficeModify")
+                {
+                    btnEdit.Enabled = true;
+                }
+                if (dr["UserPermission"].ToString() == "CreditOfficeCreate")
+                {
+                    btnNew.Enabled = true;
+                }
+                if (dr["UserPermission"].ToString() == "CreditOfficeDelete")
+                {
+                    btnDelete.Enabled = true;
+                }
+
+
+            }
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -88,7 +112,8 @@ namespace LMS.Forms
 
         private void CreditOfficer_Load(object sender, EventArgs e)
         {
-            LoadData(); 
+            LoadData();
+            EnableControl(false);
         }
         public void LoadData()
         {
