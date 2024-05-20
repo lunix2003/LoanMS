@@ -65,15 +65,15 @@ namespace LMS.Forms
                     int id = Loans.Add(loan);
                     if(id > 0)
                     {
-                        foreach(DataRow row in dt.Rows)
+                        foreach(DataRow row in dataTb.Rows)
                         {
                             LoanDetail detail = new LoanDetail();
                             detail.LoanId = id;
                             detail.PaidDate = Convert.ToDateTime(row["Date"].ToString());
                             detail.Interest = Convert.ToDouble(row["Interest"].ToString());
-                            detail.BeginningBalance = Convert.ToDouble(row["Begin"].ToString());
+                            detail.BeginningBalance = Convert.ToDouble(row["BeginningBalance"].ToString());
                             detail.Principle = Convert.ToDouble(row["Principal"].ToString());
-                            detail.EndingBalance = Convert.ToDouble(row["End"].ToString());
+                            detail.EndingBalance = Convert.ToDouble(row["EndingBalance"].ToString());
                             detail.Payment = Convert.ToDouble(row["Payment"].ToString());
                             detail.PeriodNo = Convert.ToInt32(row["No"].ToString());
                             detail.Note = row["Note"].ToString();
@@ -88,9 +88,7 @@ namespace LMS.Forms
                         MessageBox.Show("Record has Saved successfully");
                         lblId.Text = id.ToString();
                     }
-                    //Application.Restart();
-                    //LoadLoan();
-                    this.Refresh();
+                    LoadLoan();
                 }
             }
             else if(num == 1)
@@ -116,15 +114,15 @@ namespace LMS.Forms
                     else
                     {
                         LoanDetails.Delete(loan.LoanId);
-                        foreach (DataRow row in dt.Rows)
+                        foreach (DataRow row in dataTb.Rows)
                         {
                             LoanDetail detail = new LoanDetail();
                             detail.LoanId = loan.LoanId;
                             detail.PaidDate = Convert.ToDateTime(row["Date"].ToString());
                             detail.Interest = Convert.ToDouble(row["Interest"].ToString());
-                            detail.BeginningBalance = Convert.ToDouble(row["Begin"].ToString());
+                            detail.BeginningBalance = Convert.ToDouble(row["BeginningBalance"].ToString());
                             detail.Principle = Convert.ToDouble(row["Principal"].ToString());
-                            detail.EndingBalance = Convert.ToDouble(row["End"].ToString());
+                            detail.EndingBalance = Convert.ToDouble(row["EndingBalance"].ToString());
                             detail.Payment = Convert.ToDouble(row["Payment"].ToString());
                             detail.PeriodNo = Convert.ToInt32(row["No"].ToString());
                             detail.Note = row["Note"].ToString();
@@ -242,49 +240,55 @@ namespace LMS.Forms
             payment_val = amount * monthlyInterestRate / (1 - 1 / Math.Pow(1 + monthlyInterestRate, Convert.ToInt32(txtDuration.Text.Trim()) * 12));
             double totalPayment = payment_val * 12 * Convert.ToInt32(txtDuration.Text.Trim());
             double totalInterest = 0;
-
-            dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[] {
-                    new DataColumn("No", typeof(int)),
-                    new DataColumn("Begin", typeof(double)),
-                    new DataColumn("Principal",typeof(double)),
-                    new DataColumn("Interest", typeof(double)),
-                    new DataColumn("Payment", typeof(double)),
-                    new DataColumn("End", typeof(double)),
-                    new DataColumn("Paid", typeof(bool)),
-                    new DataColumn("Date", typeof(string)),
-                    new DataColumn("Note", typeof(string))
-
-            });
-
-            for (int j = 1; j <= period_val; j++)
+            dataTb = null;
+            if (dataTb == null)
             {
-                days = Convert.ToInt32(dtpLoanDate.Value.Day);
+                btnGenerate.Enabled = false;
+                dataTb = new DataTable();
+                dataTb.Columns.AddRange(new DataColumn[] {
+                        new DataColumn("LoanDetailId", typeof(int)),
+                        new DataColumn("LoanId", typeof(int)),
+                        new DataColumn("No", typeof(int)),
+                        new DataColumn("BeginningBalance", typeof(double)),
+                        new DataColumn("Principal",typeof(double)),
+                        new DataColumn("Interest", typeof(double)),
+                        new DataColumn("Payment", typeof(double)),
+                        new DataColumn("EndingBalance", typeof(double)),
+                        new DataColumn("Paid", typeof(bool)),
+                        new DataColumn("Date", typeof(string)),
+                        new DataColumn("Note", typeof(string))
+                });
+                for (int j = 1; j <= period_val; j++)
+                {
+                    days = Convert.ToInt32(dtpLoanDate.Value.Day);
 
-                beginBalance = endBalance;
-                interest_val = beginBalance * ((Rate / 100) / 12.0);
-                principle_val = payment_val - interest_val;
-                endBalance = beginBalance - principle_val;
-                totalInterest += interest_val;
-                dt.Rows.Add(j.ToString(), Math.Round(beginBalance,2).ToString("#,##0.00"), Math.Round(principle_val,2).ToString("#,#00.00"), Math.Round(interest_val,2).ToString("#,#00.00"), Math.Round(payment_val,2).ToString("#,#00.0000"), Math.Round(endBalance,2).ToString("#,#00.00"),0, days + "/" + months + "/" + years);
-                if (months == 12)
-                {
-                    months = 1;
-                    years += 1;
+                    beginBalance = endBalance;
+                    interest_val = beginBalance * ((Rate / 100) / 12.0);
+                    principle_val = payment_val - interest_val;
+                    endBalance = beginBalance - principle_val;
+                    totalInterest += interest_val;
+                    dataTb.Rows.Add(null,null,j.ToString(), Math.Round(beginBalance,2).ToString("#,##0.00"), Math.Round(principle_val,2).ToString("#,#00.00"), Math.Round(interest_val,2).ToString("#,#00.00"), Math.Round(payment_val,2).ToString("#,#00.0000"), Math.Round(endBalance,2).ToString("#,#00.00"),0, days + "/" + months + "/" + years);
+                    if (months == 12)
+                    {
+                        months = 1;
+                        years += 1;
+                    }
+                    else
+                    {
+                        months += 1;
+                    }
                 }
-                else
-                {
-                    months += 1;
-                }
+
             }
-            dgLoanDetail.DataSource = dt;
+
+            SetProperty();
+            dgLoanDetail.DataSource = dataTb;
 
             lblTotalCostOfLoan.Text = totalPayment.ToString("#,#00.00");
             lblNumberOfPayment.Text = dgLoanDetail.Rows.Count.ToString();   
             lblMonthlyPayment.Text = payment_val.ToString("#,#00.00");
-            lblTotalInterest.Text = totalInterest.ToString("#,#00.00"); 
+            lblTotalInterest.Text = totalInterest.ToString("#,#00.00");
             
-
         }
 
         private void lblId_Click(object sender, EventArgs e)
@@ -317,11 +321,13 @@ namespace LMS.Forms
             totalCostOfLoan = 0;
             totalInterest = 0;
             LoadLoanDetail();
+
         }
 
         private double totalInterest;
         private int num;
         private int liste = 0;
+        private DataTable dataTb;
         private readonly int userId;
 
         void LoadLoan()
@@ -360,6 +366,60 @@ namespace LMS.Forms
             dtpLoanDate.DataBindings.Add("Text",bsLoan,"LoanDate");
 
             LoadLoanDetail();
+        }
+        void SetProperty()
+        {
+            dgLoanDetail.RowHeadersVisible = false;
+            dgLoanDetail.AllowUserToAddRows = false;
+            dgLoanDetail.Columns[0].DataPropertyName = "LoanDetailId";
+            dgLoanDetail.Columns[0].Visible = false;
+            dgLoanDetail.Columns[1].DataPropertyName = "LoanId";
+            dgLoanDetail.Columns[1].Visible = false;
+            dgLoanDetail.Columns[2].DataPropertyName = "PeriodNo";
+            dgLoanDetail.Columns[2].Width = 50;
+            dgLoanDetail.Columns[2].Visible = true;
+            dgLoanDetail.Columns[2].HeaderText = "No";
+            dgLoanDetail.Columns[3].HeaderText = "Beginning Balance";
+            dgLoanDetail.Columns[3].Width = 200;
+            dgLoanDetail.Columns[3].DataPropertyName = "BEGINNINGBALANCE";
+            dgLoanDetail.Columns[3].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
+            dgLoanDetail.Columns[3].Visible = true;
+            dgLoanDetail.Columns[4].HeaderText = "Principle";
+            dgLoanDetail.Columns[4].Name = "Principle";
+            dgLoanDetail.Columns[4].Width = 150;
+            dgLoanDetail.Columns[4].DataPropertyName = "Principle";
+            dgLoanDetail.Columns[4].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
+            dgLoanDetail.Columns[4].Visible = true;
+            dgLoanDetail.Columns[5].HeaderText = "Interest";
+            dgLoanDetail.Columns[5].Width = 150;
+            dgLoanDetail.Columns[5].DataPropertyName = "Interest";
+            dgLoanDetail.Columns[5].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
+            dgLoanDetail.Columns[5].Visible = true;
+            dgLoanDetail.Columns[6].HeaderText = "Payment";
+            dgLoanDetail.Columns[6].Width = 150;
+            dgLoanDetail.Columns[6].DataPropertyName = "Payment";
+            dgLoanDetail.Columns[6].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
+            dgLoanDetail.Columns[6].Visible = true;
+            dgLoanDetail.Columns[7].HeaderText = "Ending Balance";
+            dgLoanDetail.Columns[7].Width = 200;
+            dgLoanDetail.Columns[7].DataPropertyName = "ENDINGBALANCE";
+            dgLoanDetail.Columns[7].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
+            dgLoanDetail.Columns[7].Visible = true;
+            dgLoanDetail.Columns[8].HeaderText = "Paid";
+            dgLoanDetail.Columns[8].DataPropertyName = "ISPAID";
+            DataGridViewCheckBoxColumn column = (DataGridViewCheckBoxColumn)dgLoanDetail.Columns[8];
+            column.DataPropertyName = "ISPAID";
+
+            dgLoanDetail.Columns[8].Width = 50;
+            dgLoanDetail.Columns[8].Visible = true;
+            dgLoanDetail.Columns[9].HeaderText = "Date";
+            dgLoanDetail.Columns[9].Width = 200;
+            dgLoanDetail.Columns[9].DataPropertyName = "PAIDDATE";
+            dgLoanDetail.Columns[9].Visible = true;
+            dgLoanDetail.Columns[10].HeaderText = "Note";
+            dgLoanDetail.Columns[10].DataPropertyName = "NOTE";
+            dgLoanDetail.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgLoanDetail.Columns[10].Visible = true;
         }
         void LoadLoanDetail()
         {
@@ -410,7 +470,7 @@ namespace LMS.Forms
             dgLoanDetail.Columns[9].Width = 200;
             dgLoanDetail.Columns[9].DataPropertyName = "PAIDDATE";
             dgLoanDetail.Columns[9].Visible = true;
-            dgLoanDetail.Columns[10].HeaderText = "Note Text";
+            dgLoanDetail.Columns[10].HeaderText = "Note";
             dgLoanDetail.Columns[10].DataPropertyName = "NOTE";
             dgLoanDetail.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgLoanDetail.Columns[10].Visible = true;
