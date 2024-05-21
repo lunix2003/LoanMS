@@ -66,6 +66,7 @@ namespace LMS.Forms
 		{
             int id = int.Parse(dgCustomer.SelectedRows[0].Cells[0].Value.ToString());
 			Customers.Delete(id);
+			Customer_Load(null,null);
         }
 
 		private void btnNew_Click(object sender, EventArgs e)
