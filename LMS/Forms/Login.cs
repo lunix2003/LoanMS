@@ -87,5 +87,15 @@ namespace LMS.Forms
 				txtPassword.UseSystemPasswordChar = true;
 			}
         }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+			int ascii = e.KeyChar;
+			//MessageBox.Show(ascii.ToString());
+			if(ascii == 13)
+			{
+				btnLogin_Click(sender, e);
+			}
+        }
     }
 }

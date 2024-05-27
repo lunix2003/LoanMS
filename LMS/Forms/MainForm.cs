@@ -93,6 +93,7 @@ namespace LMS.Forms
 		}
 
 		CustomerForm customer;
+		Dashboard dashboard;
 		private void btnDashboard_Click(object sender, EventArgs e)
 		{
 			if (pList.Visible == true) pList.Visible = !pList.Visible;
@@ -101,7 +102,17 @@ namespace LMS.Forms
 			btnListCenter.BackColor = secondColor;
 			btnTransaction.BackColor = secondColor;
 			btnManagement.ForeColor = Color.White;
+            btnMenu_Click(sender, e);
 
+            if (dashboard == null)
+            {
+                dashboard = new Dashboard();
+                dashboard.TopLevel = false;
+                dashboard.MdiParent = this;
+                this.pContent.Controls.Add(dashboard);
+            }
+            dashboard.BringToFront();
+            dashboard.Show();
         }
 
 		CreditOfficer creditOfficer;
@@ -269,5 +280,9 @@ namespace LMS.Forms
 			btnManagement.ForeColor = Color.FromArgb(44, 117, 181);
 		}
 
-	}
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+			btnDashboard_Click(sender, e);
+        }
+    }
 }

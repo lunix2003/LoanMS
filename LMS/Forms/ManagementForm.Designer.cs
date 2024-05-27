@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dgAppUser = new System.Windows.Forms.DataGridView();
@@ -54,7 +54,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.CollateralTypeDelete = new System.Windows.Forms.CheckBox();
-            this.chSelect = new System.Windows.Forms.CheckBox();
             this.AppUserDelete = new System.Windows.Forms.CheckBox();
             this.CustomerDelete = new System.Windows.Forms.CheckBox();
             this.CollateralDelete = new System.Windows.Forms.CheckBox();
@@ -128,23 +127,23 @@
             // 
             this.dgAppUser.AllowUserToAddRows = false;
             this.dgAppUser.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgAppUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgAppUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgAppUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAppUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgAppUser.Location = new System.Drawing.Point(3, 3);
             this.dgAppUser.Name = "dgAppUser";
             this.dgAppUser.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.dgAppUser.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
+            this.dgAppUser.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgAppUser.RowTemplate.Height = 24;
             this.dgAppUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgAppUser.Size = new System.Drawing.Size(387, 740);
@@ -294,7 +293,6 @@
             this.pnPermission.Controls.Add(this.label10);
             this.pnPermission.Controls.Add(this.label5);
             this.pnPermission.Controls.Add(this.CollateralTypeDelete);
-            this.pnPermission.Controls.Add(this.chSelect);
             this.pnPermission.Controls.Add(this.AppUserDelete);
             this.pnPermission.Controls.Add(this.CustomerDelete);
             this.pnPermission.Controls.Add(this.CollateralDelete);
@@ -413,19 +411,6 @@
             this.CollateralTypeDelete.TabIndex = 6;
             this.CollateralTypeDelete.Text = "Delete";
             this.CollateralTypeDelete.UseVisualStyleBackColor = true;
-            // 
-            // chSelect
-            // 
-            this.chSelect.AutoSize = true;
-            this.chSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chSelect.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chSelect.Location = new System.Drawing.Point(1024, 558);
-            this.chSelect.Name = "chSelect";
-            this.chSelect.Size = new System.Drawing.Size(76, 29);
-            this.chSelect.TabIndex = 6;
-            this.chSelect.Text = "Select";
-            this.chSelect.UseVisualStyleBackColor = true;
-            this.chSelect.CheckedChanged += new System.EventHandler(this.chSelect_CheckedChanged);
             // 
             // AppUserDelete
             // 
@@ -794,7 +779,6 @@
             this.txtPassword.Font = new System.Drawing.Font("Garamond", 12F);
             this.txtPassword.Location = new System.Drawing.Point(249, 72);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '0';
             this.txtPassword.Size = new System.Drawing.Size(371, 30);
             this.txtPassword.TabIndex = 3;
             // 
@@ -942,7 +926,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.ErrorProvider epUsername;
         private System.Windows.Forms.ErrorProvider epPassword;
-        private System.Windows.Forms.CheckBox chSelect;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbUserType;
     }

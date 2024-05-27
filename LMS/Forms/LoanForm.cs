@@ -206,6 +206,11 @@ namespace LMS.Forms
         private void btnEdit_Click(object sender, EventArgs e)
         {
             EnableControls(true);
+            txtAmount.Enabled = false;
+            txtRate.Enabled = false;
+            txtDuration.Enabled = false;
+            cbCurrency.Enabled = false;
+            btnGenerate.Enabled = false;
             num = 1;
             cbCurrency.SelectedIndex = 1;
         }
@@ -312,6 +317,7 @@ namespace LMS.Forms
             totalCostOfLoan = 0;
             totalInterest = 0;
             LoadLoanDetail();
+            EnableControls(false);
         }
 
         private void btnleft_Click(object sender, EventArgs e)
@@ -321,12 +327,30 @@ namespace LMS.Forms
             totalCostOfLoan = 0;
             totalInterest = 0;
             LoadLoanDetail();
-
+            EnableControls(false);
         }
 
         private double totalInterest;
         private int num;
         private int liste = 0;
+
+        private void txtRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int ascii = e.KeyChar;
+            if(ascii >= 48 && ascii <= 57)
+            {
+                e.Handled = false;
+            }
+            else if(ascii == 46 || ascii == 8)
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
         private DataTable dataTb;
         private readonly int userId;
 

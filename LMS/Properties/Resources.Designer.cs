@@ -63,6 +63,16 @@ namespace LMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _8922283 {
+            get {
+                object obj = ResourceManager.GetObject("8922283", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconnavigationchevron_left_24px {
             get {
                 object obj = ResourceManager.GetObject("iconnavigationchevron_left_24px", resourceCulture);
@@ -96,6 +106,26 @@ namespace LMS.Properties {
         internal static System.Drawing.Bitmap iconnavigationmenu_24px {
             get {
                 object obj = ResourceManager.GetObject("iconnavigationmenu_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_customer_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-customer-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_refresh_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-refresh-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

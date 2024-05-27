@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblId = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -232,7 +232,7 @@
             this.dtpLoanDate.Name = "dtpLoanDate";
             this.dtpLoanDate.Size = new System.Drawing.Size(391, 30);
             this.dtpLoanDate.TabIndex = 6;
-            this.dtpLoanDate.Value = new System.DateTime(2024, 4, 11, 0, 0, 0, 0);
+            this.dtpLoanDate.Value = new System.DateTime(2024, 5, 27, 0, 0, 0, 0);
             // 
             // btnGenerate
             // 
@@ -307,6 +307,7 @@
             this.txtDuration.Name = "txtDuration";
             this.txtDuration.Size = new System.Drawing.Size(63, 30);
             this.txtDuration.TabIndex = 3;
+            this.txtDuration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRate_KeyPress);
             // 
             // txtRate
             // 
@@ -317,6 +318,7 @@
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(79, 30);
             this.txtRate.TabIndex = 3;
+            this.txtRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRate_KeyPress);
             // 
             // txtCode
             // 
@@ -420,6 +422,7 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(391, 30);
             this.txtAmount.TabIndex = 3;
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRate_KeyPress);
             // 
             // txtPFCode
             // 
@@ -430,6 +433,7 @@
             this.txtPFCode.Name = "txtPFCode";
             this.txtPFCode.Size = new System.Drawing.Size(391, 30);
             this.txtPFCode.TabIndex = 3;
+            this.txtPFCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRate_KeyPress);
             // 
             // label10
             // 
@@ -567,14 +571,14 @@
             // 
             // dgLoanDetail
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Nokora", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgLoanDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nokora", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgLoanDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgLoanDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgLoanDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LoanDetailId,
@@ -588,14 +592,14 @@
             this.IsPaid,
             this.PaidDate,
             this.Note});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nokora", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgLoanDetail.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Nokora", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgLoanDetail.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgLoanDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgLoanDetail.Location = new System.Drawing.Point(4, 4);
             this.dgLoanDetail.Name = "dgLoanDetail";

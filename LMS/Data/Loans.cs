@@ -73,6 +73,15 @@ namespace LMS.Data
             }
             return id;
         }
+        public static DataTable GetView()
+        {
+            OracleCommand cmd = new OracleCommand("select * from GetView", Connection.GetConnection());
+            OracleDataAdapter adapter = new OracleDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            return dt;
+        }
         public static void Update(Loan loan)
         {
             try

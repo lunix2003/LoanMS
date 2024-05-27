@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtpDoB = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
@@ -39,7 +39,6 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtPhone = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPoB = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -63,6 +62,7 @@
             this.epDateOfBirth = new System.Windows.Forms.ErrorProvider(this.components);
             this.epPhone = new System.Windows.Forms.ErrorProvider(this.components);
             this.epPoB = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -79,6 +79,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.txtPhone);
             this.panel3.Controls.Add(this.dtpDoB);
             this.panel3.Controls.Add(this.btnSave);
             this.panel3.Controls.Add(this.rdFemale);
@@ -86,7 +87,6 @@
             this.panel3.Controls.Add(this.txtEmail);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.txtPhone);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.txtPoB);
             this.panel3.Controls.Add(this.label8);
@@ -182,15 +182,6 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Email :";
             // 
-            // txtPhone
-            // 
-            this.txtPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPhone.Font = new System.Drawing.Font("Garamond", 12F);
-            this.txtPhone.Location = new System.Drawing.Point(268, 179);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(270, 30);
-            this.txtPhone.TabIndex = 3;
-            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -282,23 +273,23 @@
             // 
             this.dgCreditOfficer.AllowUserToAddRows = false;
             this.dgCreditOfficer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCreditOfficer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCreditOfficer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgCreditOfficer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCreditOfficer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCreditOfficer.Location = new System.Drawing.Point(3, 3);
             this.dgCreditOfficer.Name = "dgCreditOfficer";
             this.dgCreditOfficer.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
-            this.dgCreditOfficer.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(206)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(32)))), ((int)(((byte)(50)))));
+            this.dgCreditOfficer.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgCreditOfficer.RowTemplate.Height = 24;
             this.dgCreditOfficer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgCreditOfficer.Size = new System.Drawing.Size(387, 563);
@@ -440,6 +431,16 @@
             // 
             this.epPoB.ContainerControl = this;
             // 
+            // txtPhone
+            // 
+            this.txtPhone.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtPhone.Font = new System.Drawing.Font("Garamond", 12F);
+            this.txtPhone.Location = new System.Drawing.Point(268, 179);
+            this.txtPhone.Mask = "(999) 000-0000";
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(270, 30);
+            this.txtPhone.TabIndex = 7;
+            // 
             // CreditOfficer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -481,7 +482,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPoB;
         private System.Windows.Forms.Label label8;
@@ -505,5 +505,6 @@
         private System.Windows.Forms.ErrorProvider epDateOfBirth;
         private System.Windows.Forms.ErrorProvider epPhone;
         private System.Windows.Forms.ErrorProvider epPoB;
+        private System.Windows.Forms.MaskedTextBox txtPhone;
     }
 }

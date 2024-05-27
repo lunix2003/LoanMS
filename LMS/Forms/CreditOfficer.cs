@@ -32,15 +32,15 @@ namespace LMS.Forms
             foreach (DataRow dr in dt.Rows)
             {
 
-                if (dr["UserPermission"].ToString() == "CreditOfficeModify")
+                if (dr["UserPermission"].ToString() == "CreditOfficerModify")
                 {
                     btnEdit.Enabled = true;
                 }
-                if (dr["UserPermission"].ToString() == "CreditOfficeCreate")
+                if (dr["UserPermission"].ToString() == "CreditOfficerCreate")
                 {
                     btnNew.Enabled = true;
                 }
-                if (dr["UserPermission"].ToString() == "CreditOfficeDelete")
+                if (dr["UserPermission"].ToString() == "CreditOfficerDelete")
                 {
                     btnDelete.Enabled = true;
                 }

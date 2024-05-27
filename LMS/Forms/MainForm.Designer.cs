@@ -60,15 +60,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblUsername = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pNav = new System.Windows.Forms.Panel();
             this.lblLogout = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pContent = new System.Windows.Forms.Panel();
             this.btnMenu = new System.Windows.Forms.PictureBox();
             this.btnMini = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pContent = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pSidebar.SuspendLayout();
             this.pList.SuspendLayout();
             this.pCreditOfficer.SuspendLayout();
@@ -81,12 +81,12 @@
             this.pTransaction.SuspendLayout();
             this.pDashboard.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pNav.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMini)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
-            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pSidebar
@@ -482,16 +482,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Username :";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::LMS.Properties.Resources.Info;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 78);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(117, 102);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -530,6 +520,23 @@
             this.lblLogout.MouseLeave += new System.EventHandler(this.lblLogout_MouseLeave);
             this.lblLogout.MouseHover += new System.EventHandler(this.lblLogout_MouseHover);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pContent);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(505, 57);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(928, 810);
+            this.panel3.TabIndex = 2;
+            // 
+            // pContent
+            // 
+            this.pContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pContent.Location = new System.Drawing.Point(0, 0);
+            this.pContent.Name = "pContent";
+            this.pContent.Size = new System.Drawing.Size(928, 810);
+            this.pContent.TabIndex = 0;
+            // 
             // btnMenu
             // 
             this.btnMenu.Image = global::LMS.Properties.Resources.iconnavigationclose_24px;
@@ -564,22 +571,15 @@
             this.btnClose.TabStop = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // panel3
+            // pictureBox1
             // 
-            this.panel3.Controls.Add(this.pContent);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(505, 57);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(928, 810);
-            this.panel3.TabIndex = 2;
-            // 
-            // pContent
-            // 
-            this.pContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pContent.Location = new System.Drawing.Point(0, 0);
-            this.pContent.Name = "pContent";
-            this.pContent.Size = new System.Drawing.Size(928, 810);
-            this.pContent.TabIndex = 0;
+            this.pictureBox1.Image = global::LMS.Properties.Resources.Info;
+            this.pictureBox1.Location = new System.Drawing.Point(32, 78);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(117, 102);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
@@ -596,6 +596,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.pSidebar.ResumeLayout(false);
             this.pList.ResumeLayout(false);
             this.pCreditOfficer.ResumeLayout(false);
@@ -609,13 +610,13 @@
             this.pDashboard.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pNav.ResumeLayout(false);
             this.pNav.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMini)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
-            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
 		}

@@ -109,7 +109,7 @@ namespace LMS.Forms
                     }
                 }
                 else if(score == 2)
-                {
+                {   
                     int id = Convert.ToInt32(dgAppUser.SelectedRows[0].Cells[0].Value);
                     user.AppUserId = id;
                     if (id > 0)
@@ -273,31 +273,7 @@ namespace LMS.Forms
         }
 
 
-        private void chSelect_CheckedChanged(object sender, EventArgs e)
-        {
-            if(chSelect.Checked)
-            {
-                chSelect.Text = "UnSelect All";
-                foreach (Control control in this.pnPermission.Controls)
-                {
-                    if (control is CheckBox)
-                    {
-                        ((CheckBox)control).Checked = true;
-                    }
-                }
-            }
-            else
-            {
-                chSelect.Text = "Select All";
-                foreach (Control control in this.pnPermission.Controls)
-                {
-                    if (control is CheckBox)
-                    {
-                        ((CheckBox)control).Checked = false;
-                    }
-                }
-            }
-        }
+        
 
         private void btnClose_Click(object sender, EventArgs e)
         {
