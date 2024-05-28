@@ -134,7 +134,7 @@ namespace LMS.Forms
             LoadCollateralType();
             LoadData();
         }
-        void LoadCollateralType()
+        public void LoadCollateralType()
         {
             cbCollateralType.DataSource = CollateralTypes.GetAll();
             cbCollateralType.DisplayMember = "CollateralTypeName";

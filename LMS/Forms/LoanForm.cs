@@ -190,10 +190,14 @@ namespace LMS.Forms
 
         private void Loan_Load(object sender, EventArgs e)
         {
+            InitialData();
+            LoadLoan();
+        }
+        public void InitialData()
+        {
             LoadCollateral();
             LoadCreditOfficer();
             LoadCustomer();
-            LoadLoan();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -408,10 +412,10 @@ namespace LMS.Forms
             dgLoanDetail.Columns[3].DataPropertyName = "BEGINNINGBALANCE";
             dgLoanDetail.Columns[3].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
             dgLoanDetail.Columns[3].Visible = true;
-            dgLoanDetail.Columns[4].HeaderText = "Principle";
+            dgLoanDetail.Columns[4].HeaderText = "Principal";
             dgLoanDetail.Columns[4].Name = "Principle";
             dgLoanDetail.Columns[4].Width = 150;
-            dgLoanDetail.Columns[4].DataPropertyName = "Principle";
+            dgLoanDetail.Columns[4].DataPropertyName = "Principal";
             dgLoanDetail.Columns[4].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
             dgLoanDetail.Columns[4].Visible = true;
             dgLoanDetail.Columns[5].HeaderText = "Interest";
@@ -463,7 +467,7 @@ namespace LMS.Forms
             dgLoanDetail.Columns[3].DataPropertyName = "BEGINNINGBALANCE";
             dgLoanDetail.Columns[3].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";
             dgLoanDetail.Columns[3].Visible = true;
-            dgLoanDetail.Columns[4].HeaderText = "Principle";
+            dgLoanDetail.Columns[4].HeaderText = "Principal";
             dgLoanDetail.Columns[4].Width = 150;
             dgLoanDetail.Columns[4].DataPropertyName = "Principle";
             dgLoanDetail.Columns[4].DefaultCellStyle.Format = cbCurrency.Text == "$" ? "$ #,#00.00" : "R #,#00.00";

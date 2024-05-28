@@ -108,13 +108,24 @@ namespace LMS.Forms
 					int id = Customers.Add(cus);
                     if (id > 0)
 					{
-						foreach(DataRow row in dtAddress.Rows)
+						if(dgAddress.Rows.Count > 0)
 						{
-							Address addr = new Address();
-							addr.AddressName = row["AddressName"].ToString();
-							addr.CustomerId = id;
-							Addresses.Add(addr);
+							foreach(DataRow row in dtAddress.Rows)
+							{
+								Address addr = new Address();
+								addr.AddressName = row["AddressName"].ToString();
+								addr.CustomerId = id;
+								Addresses.Add(addr);
+							}
+
 						}
+						else
+						{
+                            Address addr = new Address();
+                            addr.AddressName = "";
+                            addr.CustomerId = id;
+                            Addresses.Add(addr);
+                        }
 					}
 					MessageBox.Show("Record is saving!.");
 

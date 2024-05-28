@@ -93,7 +93,7 @@ namespace LMS.Forms
 		}
 
 		CustomerForm customer;
-		Dashboard dashboard;
+        Dashboard dashboard;
 		private void btnDashboard_Click(object sender, EventArgs e)
 		{
 			if (pList.Visible == true) pList.Visible = !pList.Visible;
@@ -111,6 +111,7 @@ namespace LMS.Forms
                 dashboard.MdiParent = this;
                 this.pContent.Controls.Add(dashboard);
             }
+			
             dashboard.BringToFront();
             dashboard.Show();
         }
@@ -153,6 +154,7 @@ namespace LMS.Forms
                 collateral.MdiParent = this;
                 this.pContent.Controls.Add(collateral);
             }
+			collateral.LoadCollateralType();
             collateral.BringToFront();
             collateral.Show();
         }
@@ -210,8 +212,10 @@ namespace LMS.Forms
                 loan.TopLevel = false;
                 loan.MdiParent = this;
 
-                this.pContent.Controls.Add(loan);
+                pContent.Controls.Add(loan);
             }
+			loan.InitialData();
+
             loan.BringToFront();
             loan.Show();
         }
